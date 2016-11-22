@@ -44,7 +44,7 @@
             init: function () {
 
                 var $imageHUD = document.getElementById('ImageHUD');
-                var $callAudio = document.getElementById('CallAudio');
+                var $callAudio = document.getElementById('phone-call');
                 var $CCTVVideo = document.getElementById('CCTVVideo');
                 var $videoHUD = document.getElementById('VideoHUD');
 
@@ -54,9 +54,9 @@
                         $imageHUD.setAttribute('visible', 'false');
                         $videoHUD.setAttribute('visible', 'false');
                         /*$CCTVVideo.currentTime = 0;
-                         $CCTVVideo.pause();
+                         $CCTVVideo.pause();*/
                          $callAudio.currentTime = 0;
-                         $callAudio.pause();*/
+                         $callAudio.pause();
                         viewingInfo = false;
                     } else {
                         viewingInfo = true;
@@ -92,7 +92,8 @@
                 var $keysBanner = document.getElementById('KeysBanner');
                 var $CCTVBanner = document.getElementById('CCTVBanner');
                 var $imageHUD = document.getElementById('ImageHUD');
-                var $callAudio = document.getElementById('CallAudio');
+                var $callAudio = document.getElementById('phone-call');
+                var $callAudioEl = document.getElementById('CallAudio');
                 var $CCTVVideo = document.getElementById('CCTVVideo');
                 var $dialTone = document.getElementById('Phone');
                 var $videoHUD = document.getElementById('VideoHUD');
@@ -238,7 +239,16 @@
                         case 'Mobile':
 
                             //$dialTone.pause();
-                            //$callAudio.play();
+
+                            // Reset Call Audio if already playing
+                            if ($callAudio.paused === 'false') {
+                                $callAudio.currentTime = 0;
+                                $callAudio.pause();
+                            }
+
+                            $callAudioEl.setAttribute('src', '#phone-call');
+                            $callAudio.play();
+
                             $mobileBanner.setAttribute('visible', 'false');
 
                             $imageHUD.setAttribute('src', '#SlideTenImage');
@@ -296,7 +306,7 @@
         <!-- Audio -->
         <audio id="click-sound" src="assets/sounds/click.ogg"></audio>
         <!-- <audio id="phone-busy" src="assets/sounds/dialtone.mp3"></audio> -->
-        <video id="phone-call" loop="false" src="assets/video/999Call.webm"></video>
+        <video id="phone-call" preload="auto" src="assets/video/999Call.webm"></video>
 
         <!-- CCTV Video
         <video id="CCTVVideo" loop="false" src="assets/video/cctv.webm"></video> -->
@@ -786,17 +796,16 @@
 
         <!--<a-entity id="Phone"
                  sound="src: #phone-busy; autoplay:true; loop:true;"
-                 position="10.5 1.0 -11.2"></a-entity>
+                 position="10.5 1.0 -11.2"></a-entity> -->
 
-       <a-video id="CallAudio"
-               src="#phone-call"
-               height="0.81"
-               width="1.2"
-               position="0 0 -5"></a-video>
+         <a-video id="CallAudio"
+                height="0.81"
+                width="1.2"
+                position="0 0 -5"></a-video>
 
-        <!-- <a-entity id="CallAudio"
-                  sound="src: #phone-call; loop:true; volume: 1"
-                  position="10.5 1.6 -11.2"></a-entity> -->
+         <!-- <a-entity id="CallAudio"
+                   sound="src: #phone-call; loop:true; volume: 1"
+                   position="10.5 1.6 -11.2"></a-entity> -->
 
         <!-- LIGHTING -->
 
@@ -872,6 +881,17 @@
                   rotation="0 0 0">
             <a-camera id="RightHand">
 
+                <a-image id="ImageHUD"
+                         geometry="primitive: plane; height: 0.75; width: 1.0"
+                         position="0 0 -0.6"
+                         visible="false"></a-image>
+
+                <a-video id="VideoHUD"
+                         height="0.6"
+                         width="1.2"
+                         position="0 0 -0.6"
+                         visible="false"></a-video>
+
                  <a-cursor id="cursor" objects=".clickable" color="#009ec2">
                     <a-animation begin="click" easing="ease-in" attribute="scale"
                                  fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
@@ -880,20 +900,6 @@
                 </a-cursor>
             </a-camera>
         </a-entity>
-
-        <a-image id="ImageHUD"
-                 geometry="primitive: plane; height: 0.75; width: 1.0"
-                 position="13.1 1.9 -5.25"
-                 rotation="10 240 0"
-                 opacity="0.9"
-                 visible="false"></a-image>
-
-        <a-video id="VideoHUD"
-                 height="0.6"
-                 width="1.2"
-                 position="0 0 -1"
-                 opacity="0.9"
-                 visible="false"></a-video>
 
         <!-- Controller
         <a-entity id="LeftHand" teleport-controls="collisionEntity: #FloorGeometry; button: trigger;" vive-controls="hand: left"></a-entity>-->

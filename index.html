@@ -44,7 +44,7 @@
 			  init: function () {
 
 				  var $imageHUD = document.getElementById('ImageHUD');
-				  var $callAudio = document.getElementById('CallAudio');
+				  var $callAudio = document.getElementById('PhoneCall');
 				  var $CCTVVideo = document.getElementById('CCTVVideo');
 				  var $videoHUD = document.getElementById('VideoHUD');
 
@@ -54,9 +54,9 @@
 						  $imageHUD.setAttribute('visible', 'false');
 						  $videoHUD.setAttribute('visible', 'false');
 						  /*$CCTVVideo.currentTime = 0;
-						  $CCTVVideo.pause();
+						  $CCTVVideo.pause();*/
 						  $callAudio.currentTime = 0;
-						  $callAudio.pause();*/
+						  $callAudio.pause();
 						  viewingInfo = false;
 					  } else {
 						  viewingInfo = true;
@@ -92,7 +92,8 @@
 				  var $keysBanner = document.getElementById('KeysBanner');
 				  var $CCTVBanner = document.getElementById('CCTVBanner');
 				  var $imageHUD = document.getElementById('ImageHUD');
-				  var $callAudio = document.getElementById('CallAudio');
+				  var $callSourceFile = document.getElementById('PhoneCall');
+				  var $callElement = document.getElementById('CallAudio');
 				  var $CCTVVideo = document.getElementById('CCTVVideo');
 				  var $dialTone = document.getElementById('Phone');
 				  var $videoHUD = document.getElementById('VideoHUD');
@@ -237,8 +238,14 @@
 							  break;
 						  case 'Mobile':
 
-							  //$dialTone.pause();
-							  //$callAudio.play();
+							  // Reset Call Audio if already playing
+							  if ($callSourceFile.paused === 'false') {
+								  $callSourceFile.currentTime = 0;
+								  $callSourceFile.pause();
+							  }
+
+							  $callElement.setAttribute('src', '#phone-call');
+							  $callSourceFile.play();
 							  $mobileBanner.setAttribute('visible', 'false');
 
 							  $imageHUD.setAttribute('src', '#SlideTenImage');
@@ -296,7 +303,7 @@
 		  <!-- Audio -->
 		  <audio id="click-sound" src="assets/sounds/click.ogg"></audio>
 		  <!-- <audio id="phone-busy" src="assets/sounds/dialtone.mp3"></audio> -->
-		  <video id="phone-call" loop="false" src="assets/video/999Call.webm"></video>
+		  <video id="PhoneCall" preload="auto" src="assets/video/999Call.webm"></video>
 
 		  <!-- CCTV Video
 		  <video id="CCTVVideo" loop="false" src="assets/video/cctv.webm"></video> -->
@@ -786,10 +793,9 @@
 
 			<!--<a-entity id="Phone"
                      sound="src: #phone-busy; autoplay:true; loop:true;"
-                     position="10.5 1.0 -11.2"></a-entity>
+                     position="10.5 1.0 -11.2"></a-entity> -->
 
            <a-video id="CallAudio"
-                   src="#phone-call"
                    height="0.81"
                    width="1.2"
                    position="0 0 -5"></a-video>
