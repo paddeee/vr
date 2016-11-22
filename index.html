@@ -19,17 +19,17 @@
 		  }
 	  </style>
 
-	  <!-- Networked
+	  <!-- Networked -->
 	  <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe.min.js"></script>
 	  <script src="https://rawgit.com/ngokevin/kframe/master/dist/kframe.min.js"></script>
 	  <script src="https://rawgit.com/bryik/aframe-vive-cursor-component/master/dist/aframe-vive-cursor-component.min.js"></script>
-	  <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-component.min.js"></script>-->
+	  <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-component.min.js"></script>
 
-	  <!-- Offline -->
+	  <!-- Offline
 	  <script src="lib//aframe.min.js"></script>
 	  <script src="lib/kframe.min.js"></script>
 	  <script src="lib/aframe-vive-cursor-component.min.js"></script>
-	  <script src="lib/aframe-teleport-controls.min.js"></script>
+	  <script src="lib/aframe-teleport-controls.min.js"></script> -->
 
 	  <script>
 
@@ -55,8 +55,8 @@
 			  init: function () {
 
 				  var $imageHUD = document.getElementById('ImageHUD');
-				  var $callAudio = document.getElementById('PhoneCallSourceFile');
-				  var $CCTVVideo = document.getElementById('CCTVVideo');
+				  var $callAudioSourceFile = document.getElementById('PhoneCallSourceFile');
+				  var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
 				  var $videoHUD = document.getElementById('VideoHUD');
 
 				  this.el.addEventListener('triggerdown', function () {
@@ -64,10 +64,10 @@
 					  if (viewingInfo) {
 						  $imageHUD.setAttribute('visible', 'false');
 						  $videoHUD.setAttribute('visible', 'false');
-						  /*$CCTVVideo.currentTime = 0;
-						  $CCTVVideo.pause();*/
-						  $callAudio.currentTime = 0;
-						  $callAudio.pause();
+						  $CCTVVideoSourceFile.currentTime = 0;
+						  $CCTVVideoSourceFile.pause();
+						  $callAudioSourceFile.currentTime = 0;
+						  $callAudioSourceFile.pause();
 						  viewingInfo = false;
 					  } else {
 						  viewingInfo = true;
@@ -106,7 +106,7 @@
 				  var $dialToneElement = document.getElementById('DialToneElement');
 				  var $callSourceFile = document.getElementById('PhoneCallSourceFile');
 				  var $callElement = document.getElementById('CallElement');
-				  var $CCTVVideo = document.getElementById('CCTVVideo');
+				  var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
 				  var $videoHUD = document.getElementById('VideoHUD');
 
 				  this.el.addEventListener('mouseenter', function (event) {
@@ -258,7 +258,6 @@
 								  $callSourceFile.pause();
 							  }
 
-							  $callElement.setAttribute('src', '#phone-call');
 							  $callSourceFile.play();
 							  $mobileBanner.setAttribute('visible', 'false');
 
@@ -297,9 +296,8 @@
 
 							  $CCTVBanner.setAttribute('visible', 'false');
 
-							  $videoHUD.setAttribute('src', '#CCTVVideo');
+							  $videoHUD.setAttribute('src', '#CCTVVideoSourceFile');
 							  $videoHUD.setAttribute('visible', 'true');
-							  $CCTVVideo.play();
 							  break;
 					  }
 				  });
@@ -319,8 +317,10 @@
 		  <audio id="DialToneSourceFile" src="assets/sounds/dial-tone.ogg"></audio>
 		  <video id="PhoneCallSourceFile" preload="auto" src="assets/video/999Call.webm"></video>
 
-		  <!-- CCTV Video
-		  <video id="CCTVVideo" loop="false" src="assets/video/cctv.webm"></video> -->
+		  <!-- CCTV Video  -->
+		  <video id="CCTVVideoSourceFile"
+				 preload="auto"
+				 src="assets/video/cctv.webm"></video>
 
 		  <!-- Loading Mask
 		  <img id="MaskImage" src="assets/img/mask.png"> -->
@@ -583,8 +583,7 @@
 					 depth="0.2"
 					 position="-3.5 1.7 -21.5"
 					 sound="on: click; src: #click-sound"
-					 look-at="#RightHand"
-                     visible="false"></a-image>
+					 look-at="#RightHand"></a-image>
 
 			<!-- Banner Images -->
 			<a-image id="CigaretteBanner"
@@ -807,7 +806,7 @@
 
 			<a-sound id="DialToneElement"
 					 src="#DialToneSourceFile"
-					 volume="0.3"
+					 volume="0.2"
 					 loop="true"
 					 height="0.81"
 					 width="1.2"
@@ -916,7 +915,7 @@
 					 visible="false"></a-video>-->
 
 			<!-- Controller -->
-			<a-entity id="LeftHand" teleport-controls="collisionEntity: #FloorGeometry; button: trigger;" vive-controls="hand: left"></a-entity>
+			<a-entity id="LeftHand" teleport-controls="collisionEntity: #FloorGeometry; button: trigger; maxLength: 25" vive-controls="hand: left"></a-entity>
 
 			<!-- Teleporter -->
 			<a-entity id="RightHand" custom-vive-controls vive-cursor="objects: .clickable" vive-controls="hand: right">
