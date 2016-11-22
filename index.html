@@ -19,17 +19,17 @@
 		  }
 	  </style>
 
-	  <!-- Networked -->
+	  <!-- Networked
 	  <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe.min.js"></script>
 	  <script src="https://rawgit.com/ngokevin/kframe/master/dist/kframe.min.js"></script>
 	  <script src="https://rawgit.com/bryik/aframe-vive-cursor-component/master/dist/aframe-vive-cursor-component.min.js"></script>
-	  <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-component.min.js"></script>
+	  <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-component.min.js"></script> -->
 
-	  <!-- Offline
+	  <!-- Offline -->
 	  <script src="lib//aframe.min.js"></script>
 	  <script src="lib/kframe.min.js"></script>
 	  <script src="lib/aframe-vive-cursor-component.min.js"></script>
-	  <script src="lib/aframe-teleport-controls.min.js"></script> -->
+	  <script src="lib/aframe-teleport-controls.min.js"></script>
 
 	  <script>
 
@@ -44,7 +44,7 @@
 
 				  $dialToneElement.components.sound.playSound();
 				  $loadingMask.setAttribute('hidden', 'true');
-				  $crimeScene.setAttribute('visible', 'true');
+				  //$crimeScene.setAttribute('visible', 'true');
 			  });
 		  });
 
@@ -380,6 +380,9 @@
            <img id="SlideTwentyImage" src="assets/img/slide20.jpg">
            <img id="SlideTwentyOneImage" src="assets/img/slide21.jpg">
 
+		  <!-- Loading Mask Collada Model-->
+		  <a-asset-item id="LoadingMaskCollada" src="assets/collada/LoadingMask.dae"></a-asset-item>
+
            <!-- Turf Lane Collada Model-->
 		  <a-asset-item id="TurfLaneCollada" src="assets/collada/Crime.dae"></a-asset-item>
 
@@ -392,12 +395,30 @@
 
 	  </a-assets>
 
-		<!-- <a-curvedimage id="LoadingMask"
-					   src="#MaskImage" height="3.0" radius="5.7" theta-length="72"
-					   position="0 1.5 0"
-					   rotation="0 145 0" scale="0.8 0.8 0.8"></a-curvedimage> -->
+		<!-- Loading Mask -->
 
-		<a-entity id="CrimeScene" visible="false">
+		<a-sky id="LoadingMaskCover"
+			   color="#000"
+			   geometry="radius: 4;"
+			   rotation="0 180 0">
+
+			<a-animation attribute="position" delay="20000" to="0 70 2.0" dur="5000"></a-animation>
+
+			<a-entity id="LoadingMask"
+					  position="0 0.7 5.0"
+					  rotation="0 270 0"
+					  collada-model="#LoadingMaskCollada">
+
+				<a-light type="point"
+						 color="#bbb"
+						 intensity="2.0"
+						 distance="12"
+						 decay="1"
+						 position="0 0 0"></a-light>
+			</a-entity>
+		</a-sky>
+
+		<a-entity id="CrimeScene">
 
 			<!-- Floor Geometry -->
 			<a-entity id="FloorGeometry"
