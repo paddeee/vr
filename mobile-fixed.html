@@ -29,91 +29,18 @@
 
     <script>
 
-        var viewingInfo;
-
         document.addEventListener("DOMContentLoaded", function() {
 
             var $turfLaneModel = document.getElementById('TurfLane');
-            var $scene = document.querySelector('a-scene');
             var $loadingMask = document.getElementById('LoadingMask');
-            var $goIcon = document.getElementById('GoIcon');
 
             $turfLaneModel.addEventListener('model-loaded', function () {
-                console.log('Turf Loaded');
+
                 setTimeout(function() {
                     $loadingMask.setAttribute('hidden', 'true');
                 }, 1000);
             });
-
-            $scene.addEventListener('enter-vr', function () {
-                $goIcon.setAttribute('visible', 'true');
-            });
         });
-
-        AFRAME.registerComponent('custom-vive-controls', {
-
-            init: function () {
-
-                var $imageHUD = document.getElementById('ImageHUD');
-                var $callAudioSourceFile = document.getElementById('PhoneCallSourceFile');
-                var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
-                var $videoHUD = document.getElementById('VideoHUD');
-
-                this.el.addEventListener('triggerdown', function () {
-
-                    if (viewingInfo === true) {
-                        $imageHUD.setAttribute('visible', 'false');
-                        $videoHUD.setAttribute('visible', 'false');
-                        $CCTVVideoSourceFile.currentTime = 0;
-                        $CCTVVideoSourceFile.pause();
-                        $callAudioSourceFile.currentTime = 0;
-                        $callAudioSourceFile.pause();
-                        viewingInfo = false;
-                    } else if (viewingInfo === false) {
-                        viewingInfo = true;
-                    }
-                });
-            }
-        });
-
-        // Handle the Enter VR Button
-        AFRAME.registerComponent('go-listener', {
-
-            init: function () {
-
-                var $lighting = document.getElementById('Lighting');
-                var $icons = document.getElementById('Icons');
-                var $loadingScene = document.getElementById('LoadingScene');
-                var $dialToneElement = document.getElementById('DialToneElement');
-
-                this.el.addEventListener('mouseenter', function (event) {
-
-                    event.target.setAttribute('opacity', '1');
-                });
-
-                this.el.addEventListener('mouseleave', function (event) {
-
-                    event.target.setAttribute('opacity', '0.4');
-                });
-
-                this.el.addEventListener('click', function () {
-                    console.log('Clicked');
-
-                    $loadingScene.setAttribute('visible', 'false');
-                    $icons.setAttribute('visible', 'true');
-                    $lighting.setAttribute('visible', 'true');
-
-                    viewingInfo = false;
-
-                    if ($dialToneElement.paused === 'false') {
-                        return;
-                    }
-
-                    $dialToneElement.components.sound.playSound();
-                });
-            }
-        });
-
 
         AFRAME.registerComponent('cursor-listener', {
 
@@ -124,6 +51,7 @@
             init: function () {
 
                 var data = this.data;
+                var $callAudioSourceFile = document.getElementById('PhoneCallSourceFile');
                 var $infoIcons = document.querySelectorAll('.info-icon');
                 var $bannerImages= document.querySelectorAll('.banner-image');
                 var $cigaretteBanner = document.getElementById('CigaretteBanner');
@@ -141,18 +69,14 @@
                 var $hammerBanner = document.getElementById('HammerBanner');
                 var $keysBanner = document.getElementById('KeysBanner');
                 var $CCTVBanner = document.getElementById('CCTVBanner');
-                var $imageHUD = document.getElementById('ImageHUD');
+                var $cigaretteHUD = document.getElementById('CigaretteHUD');
+                var $footPrintHUD = document.getElementById('FootPrintHUD');
                 var $dialToneElement = document.getElementById('DialToneElement');
                 var $callSourceFile = document.getElementById('PhoneCallSourceFile');
-                var $callElement = document.getElementById('CallElement');
                 var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
                 var $videoHUD = document.getElementById('VideoHUD');
 
                 this.el.addEventListener('mouseenter', function (event) {
-
-                    if (viewingInfo) {
-                        return;
-                    }
 
                     event.target.setAttribute('opacity', '1');
 
@@ -218,24 +142,15 @@
 
                 this.el.addEventListener('click', function () {
 
-                    if (!viewingInfo) {
-                        return;
-                    }
-
                     switch(data.evidenceType) {
                         case 'Cigarette':
-
                             $cigaretteBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideOneImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $cigaretteHUD.setAttribute('visible', 'true');
                             break;
                         case 'Footprint':
 
                             $footPrintBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideTwoImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $footPrintHUD.setAttribute('visible', 'true');
                             break;
                             /*case 'Fibres':
 
@@ -944,10 +859,18 @@
             </a-camera>
         </a-entity>
 
-        <a-image id="ImageHUD"
+        <a-image id="CigaretteHUD"
+                 src="#SlideOneImage"
                  geometry="primitive: plane; height: 0.75; width: 1.0"
-                 position="13.1 1.9 -5.25"
-                 rotation="10 240 0"
+                 position="12.28 1.5 -2.50"
+                 rotation="0 290 0"
+                 visible="false"></a-image>
+
+        <a-image id="FootPrintHUD"
+                 src="#SlideTwoImage"
+                 geometry="primitive: plane; height: 0.75; width: 1.0"
+                 position="10.2 1.5 -3.8"
+                 rotation="0 0 0"
                  visible="false"></a-image>
 
         <a-video id="VideoHUD"

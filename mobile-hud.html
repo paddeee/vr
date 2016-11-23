@@ -34,86 +34,15 @@
         document.addEventListener("DOMContentLoaded", function() {
 
             var $turfLaneModel = document.getElementById('TurfLane');
-            var $scene = document.querySelector('a-scene');
             var $loadingMask = document.getElementById('LoadingMask');
-            var $goIcon = document.getElementById('GoIcon');
 
             $turfLaneModel.addEventListener('model-loaded', function () {
-                console.log('Turf Loaded');
+
                 setTimeout(function() {
                     $loadingMask.setAttribute('hidden', 'true');
                 }, 1000);
             });
-
-            $scene.addEventListener('enter-vr', function () {
-                $goIcon.setAttribute('visible', 'true');
-            });
         });
-
-        AFRAME.registerComponent('custom-vive-controls', {
-
-            init: function () {
-
-                var $imageHUD = document.getElementById('ImageHUD');
-                var $callAudioSourceFile = document.getElementById('PhoneCallSourceFile');
-                var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
-                var $videoHUD = document.getElementById('VideoHUD');
-
-                this.el.addEventListener('triggerdown', function () {
-
-                    if (viewingInfo === true) {
-                        $imageHUD.setAttribute('visible', 'false');
-                        $videoHUD.setAttribute('visible', 'false');
-                        $CCTVVideoSourceFile.currentTime = 0;
-                        $CCTVVideoSourceFile.pause();
-                        $callAudioSourceFile.currentTime = 0;
-                        $callAudioSourceFile.pause();
-                        viewingInfo = false;
-                    } else if (viewingInfo === false) {
-                        viewingInfo = true;
-                    }
-                });
-            }
-        });
-
-        // Handle the Enter VR Button
-        AFRAME.registerComponent('go-listener', {
-
-            init: function () {
-
-                var $lighting = document.getElementById('Lighting');
-                var $icons = document.getElementById('Icons');
-                var $loadingScene = document.getElementById('LoadingScene');
-                var $dialToneElement = document.getElementById('DialToneElement');
-
-                this.el.addEventListener('mouseenter', function (event) {
-
-                    event.target.setAttribute('opacity', '1');
-                });
-
-                this.el.addEventListener('mouseleave', function (event) {
-
-                    event.target.setAttribute('opacity', '0.4');
-                });
-
-                this.el.addEventListener('click', function () {
-                    console.log('Clicked');
-
-                    $loadingScene.setAttribute('visible', 'false');
-                    $icons.setAttribute('visible', 'true');
-                    $lighting.setAttribute('visible', 'true');
-
-                    viewingInfo = false;
-
-                    if ($dialToneElement.paused === 'false') {
-                        return;
-                    }
-
-                    $dialToneElement.components.sound.playSound();
-                });
-            }
-        });
-
 
         AFRAME.registerComponent('cursor-listener', {
 
@@ -124,6 +53,7 @@
             init: function () {
 
                 var data = this.data;
+                var $callAudioSourceFile = document.getElementById('PhoneCallSourceFile');
                 var $infoIcons = document.querySelectorAll('.info-icon');
                 var $bannerImages= document.querySelectorAll('.banner-image');
                 var $cigaretteBanner = document.getElementById('CigaretteBanner');
@@ -144,7 +74,6 @@
                 var $imageHUD = document.getElementById('ImageHUD');
                 var $dialToneElement = document.getElementById('DialToneElement');
                 var $callSourceFile = document.getElementById('PhoneCallSourceFile');
-                var $callElement = document.getElementById('CallElement');
                 var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
                 var $videoHUD = document.getElementById('VideoHUD');
 
@@ -152,56 +81,57 @@
 
                     if (viewingInfo) {
                         return;
-                    }
+                    } else {
 
-                    event.target.setAttribute('opacity', '1');
+                        event.target.setAttribute('opacity', '1');
 
-                    switch(data.evidenceType) {
-                        case 'Cigarette':
-                            $cigaretteBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Footprint':
-                            $footPrintBanner.setAttribute('visible', 'true');
-                            break;
-                            /*case 'Fibres':
-                             $brokenWindowBanner.setAttribute('visible', 'true');
-                             break;*/
-                        case 'Glass Fragments':
-                            $glassFragmentsBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Door Handle':
-                            $doorHandleBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Finger Print':
-                            $fingerPrintBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Carpet Mark':
-                            $carpetBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'iMac':
-                            $iMacBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Fridge':
-                            $fridgeBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Mobile':
-                            $mobileBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'BackDoor':
-                            $backDoorBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Body':
-                            $bodyBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Hammer':
-                            $hammerBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Keys':
-                            $keysBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'CCTV':
-                            $CCTVBanner.setAttribute('visible', 'true');
-                            break;
+                        switch(data.evidenceType) {
+                            case 'Cigarette':
+                                $cigaretteBanner.setAttribute('visible', 'true');
+                                break;
+                            case 'Footprint':
+                                $footPrintBanner.setAttribute('visible', 'true');
+                                break;
+                                /*case 'Fibres':
+                                 $brokenWindowBanner.setAttribute('visible', 'true');
+                                 break;*/
+                            case 'Glass Fragments':
+                                $glassFragmentsBanner.setAttribute('visible', 'true');
+                                break;
+                            case 'Door Handle':
+                                $doorHandleBanner.setAttribute('visible', 'true');
+                                break;
+                            case 'Finger Print':
+                                $fingerPrintBanner.setAttribute('visible', 'true');
+                                break;
+                            case 'Carpet Mark':
+                                $carpetBanner.setAttribute('visible', 'true');
+                                break;
+                            case 'iMac':
+                                $iMacBanner.setAttribute('visible', 'true');
+                                break;
+                            case 'Fridge':
+                                $fridgeBanner.setAttribute('visible', 'true');
+                                break;
+                            case 'Mobile':
+                                $mobileBanner.setAttribute('visible', 'true');
+                                break;
+                            case 'BackDoor':
+                                $backDoorBanner.setAttribute('visible', 'true');
+                                break;
+                            case 'Body':
+                                $bodyBanner.setAttribute('visible', 'true');
+                                break;
+                            case 'Hammer':
+                                $hammerBanner.setAttribute('visible', 'true');
+                                break;
+                            case 'Keys':
+                                $keysBanner.setAttribute('visible', 'true');
+                                break;
+                            case 'CCTV':
+                                $CCTVBanner.setAttribute('visible', 'true');
+                                break;
+                        }
                     }
                 });
 
@@ -218,127 +148,140 @@
 
                 this.el.addEventListener('click', function () {
 
-                    if (!viewingInfo) {
-                        return;
+                    if (viewingInfo) {
+
+                        $imageHUD.setAttribute('visible', 'false');
+                        $videoHUD.setAttribute('visible', 'false');
+                        $CCTVVideoSourceFile.currentTime = 0;
+                        $CCTVVideoSourceFile.pause();
+                        $callAudioSourceFile.currentTime = 0;
+                        $callAudioSourceFile.pause();
+
+                        viewingInfo = false;
+
+                    } else {
+
+                        switch(data.evidenceType) {
+                            case 'Cigarette':
+
+                                $cigaretteBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideOneImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                            case 'Footprint':
+
+                                $footPrintBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideTwoImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                                /*case 'Fibres':
+
+                                 $brokenWindowBanner.setAttribute('visible', 'false');
+
+                                 $imageHUD.setAttribute('src', '#SlideThreeImage');
+                                 $imageHUD.setAttribute('visible', 'true');
+                                 break;*/
+                            case 'Glass Fragments':
+
+                                $glassFragmentsBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideFourImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                            case 'Door Handle':
+
+                                $doorHandleBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideFiveImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                            case 'Finger Print':
+
+                                $fingerPrintBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideSixImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                            case 'Carpet Mark':
+
+                                $carpetBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideSevenImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                            case 'iMac':
+
+                                $iMacBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideEightImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                            case 'Fridge':
+
+                                $fridgeBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideNineImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                            case 'Mobile':
+
+                                // Stop dial tone once call has been listened to
+                                $dialToneElement.pause();
+
+                                // Reset Call Audio if already playing
+                                if ($callSourceFile.paused === 'false') {
+                                    $callSourceFile.currentTime = 0;
+                                    $callSourceFile.pause();
+                                }
+
+                                $callSourceFile.play();
+                                $mobileBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideTenImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                            case 'BackDoor':
+
+                                $backDoorBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideElevenImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                            case 'Body':
+
+                                $bodyBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideTwelveImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                            case 'Hammer':
+
+                                $hammerBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideEighteenImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                            case 'Keys':
+
+                                $keysBanner.setAttribute('visible', 'false');
+
+                                $imageHUD.setAttribute('src', '#SlideNineteenImage');
+                                $imageHUD.setAttribute('visible', 'true');
+                                break;
+                            case 'CCTV':
+
+                                $CCTVBanner.setAttribute('visible', 'false');
+
+                                $videoHUD.setAttribute('src', '#CCTVVideoSourceFile');
+                                $videoHUD.setAttribute('visible', 'true');
+                                break;
+                        }
+
+                        viewingInfo = true;
                     }
 
-                    switch(data.evidenceType) {
-                        case 'Cigarette':
-
-                            $cigaretteBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideOneImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                        case 'Footprint':
-
-                            $footPrintBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideTwoImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                            /*case 'Fibres':
-
-                             $brokenWindowBanner.setAttribute('visible', 'false');
-
-                             $imageHUD.setAttribute('src', '#SlideThreeImage');
-                             $imageHUD.setAttribute('visible', 'true');
-                             break;*/
-                        case 'Glass Fragments':
-
-                            $glassFragmentsBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideFourImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                        case 'Door Handle':
-
-                            $doorHandleBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideFiveImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                        case 'Finger Print':
-
-                            $fingerPrintBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideSixImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                        case 'Carpet Mark':
-
-                            $carpetBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideSevenImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                        case 'iMac':
-
-                            $iMacBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideEightImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                        case 'Fridge':
-
-                            $fridgeBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideNineImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                        case 'Mobile':
-
-                            // Stop dial tone once call has been listened to
-                            $dialToneElement.pause();
-
-                            // Reset Call Audio if already playing
-                            if ($callSourceFile.paused === 'false') {
-                                $callSourceFile.currentTime = 0;
-                                $callSourceFile.pause();
-                            }
-
-                            $callSourceFile.play();
-                            $mobileBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideTenImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                        case 'BackDoor':
-
-                            $backDoorBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideElevenImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                        case 'Body':
-
-                            $bodyBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideTwelveImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                        case 'Hammer':
-
-                            $hammerBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideEighteenImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                        case 'Keys':
-
-                            $keysBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideNineteenImage');
-                            $imageHUD.setAttribute('visible', 'true');
-                            break;
-                        case 'CCTV':
-
-                            $CCTVBanner.setAttribute('visible', 'false');
-
-                            $videoHUD.setAttribute('src', '#CCTVVideoSourceFile');
-                            $videoHUD.setAttribute('visible', 'true');
-                            break;
-                    }
                 });
             }
         });

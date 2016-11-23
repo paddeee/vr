@@ -33,8 +33,6 @@
 
 	<script>
 
-		var viewingInfo;
-
 		document.addEventListener("DOMContentLoaded", function() {
 
 			var $turfLaneModel = document.getElementById('TurfLane');
@@ -54,7 +52,7 @@
 			});
 		});
 
-		AFRAME.registerComponent('custom-vive-controls', {
+		/*AFRAME.registerComponent('custom-vive-controls', {
 
 			init: function () {
 
@@ -78,7 +76,7 @@
 					}
 				});
 			}
-		});
+		});*/
 
 		// Handle the Enter VR Button
 		AFRAME.registerComponent('go-listener', {
@@ -106,8 +104,6 @@
 					$loadingScene.setAttribute('visible', 'false');
 					$icons.setAttribute('visible', 'true');
 					$lighting.setAttribute('visible', 'true');
-
-					viewingInfo = false;
 
 					if ($dialToneElement.paused === 'false') {
 						return;
@@ -145,7 +141,8 @@
 				var $hammerBanner = document.getElementById('HammerBanner');
 				var $keysBanner = document.getElementById('KeysBanner');
 				var $CCTVBanner = document.getElementById('CCTVBanner');
-				var $imageHUD = document.getElementById('ImageHUD');
+				var $cigaretteHUD = document.getElementById('CigaretteHUD');
+				var $footPrintHUD = document.getElementById('FootPrintHUD');
 				var $dialToneElement = document.getElementById('DialToneElement');
 				var $callSourceFile = document.getElementById('PhoneCallSourceFile');
 				var $callElement = document.getElementById('CallElement');
@@ -153,10 +150,6 @@
 				var $videoHUD = document.getElementById('VideoHUD');
 
 				this.el.addEventListener('mouseenter', function (event) {
-
-					if (viewingInfo) {
-						return;
-					}
 
 					event.target.setAttribute('opacity', '1');
 
@@ -222,24 +215,15 @@
 
 				this.el.addEventListener('click', function () {
 
-					if (!viewingInfo) {
-						return;
-					}
-
 					switch(data.evidenceType) {
 						case 'Cigarette':
-
 							$cigaretteBanner.setAttribute('visible', 'false');
-
-							$imageHUD.setAttribute('src', '#SlideOneImage');
-							$imageHUD.setAttribute('visible', 'true');
+							$cigaretteHUD.setAttribute('visible', 'true');
 							break;
 						case 'Footprint':
 
 							$footPrintBanner.setAttribute('visible', 'false');
-
-							$imageHUD.setAttribute('src', '#SlideTwoImage');
-							$imageHUD.setAttribute('visible', 'true');
+							$footPrintHUD.setAttribute('visible', 'true');
 							break;
 							/*case 'Fibres':
 
@@ -971,19 +955,27 @@
 	<a-entity id="LeftHand" teleport-controls="collisionEntity: #FloorGeometry; button: trigger; maxLength: 25" vive-controls="hand: left"></a-entity>
 
 	<!-- Teleporter -->
-	<a-entity id="RightHand" custom-vive-controls vive-cursor="objects: .clickable" vive-controls="hand: right">
+	<a-entity id="RightHand" custom-vive-controls vive-cursor="objects: .clickable" vive-controls="hand: right"></a-entity>
 
-		<a-image id="ImageHUD"
-				 geometry="primitive: plane; height: 0.6; width: 1.2"
-				 position="0 0 -0.6"
-				 visible="false"></a-image>
+	<a-image id="CigaretteHUD"
+			 src="#SlideOneImage"
+			 geometry="primitive: plane; height: 0.75; width: 1.0"
+			 position="12.28 1.5 -2.50"
+			 rotation="0 290 0"
+			 visible="false"></a-image>
 
-		<a-video id="VideoHUD"
-				 height="0.6"
-				 width="1.2"
-				 position="0 0 -0.6"
-				 visible="false"></a-video>
-	</a-entity>
+	<a-image id="FootPrintHUD"
+			 src="#SlideTwoImage"
+			 geometry="primitive: plane; height: 0.75; width: 1.0"
+			 position="10.2 1.5 -3.8"
+			 rotation="0 0 0"
+			 visible="false"></a-image>
+
+	<a-video id="VideoHUD"
+			 height="0.6"
+			 width="1.2"
+			 position="0 0 -1"
+			 visible="false"></a-video>
 </a-scene>
 </body>
 </html>
