@@ -52,32 +52,6 @@
 			});
 		});
 
-		/*AFRAME.registerComponent('custom-vive-controls', {
-
-			init: function () {
-
-				var $imageHUD = document.getElementById('ImageHUD');
-				var $callAudioSourceFile = document.getElementById('PhoneCallSourceFile');
-				var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
-				var $videoHUD = document.getElementById('VideoHUD');
-
-				this.el.addEventListener('triggerdown', function () {
-
-					if (viewingInfo === true) {
-						$imageHUD.setAttribute('visible', 'false');
-						$videoHUD.setAttribute('visible', 'false');
-						$CCTVVideoSourceFile.currentTime = 0;
-						$CCTVVideoSourceFile.pause();
-						$callAudioSourceFile.currentTime = 0;
-						$callAudioSourceFile.pause();
-						viewingInfo = false;
-					} else if (viewingInfo === false) {
-						viewingInfo = true;
-					}
-				});
-			}
-		});*/
-
 		// Handle the Enter VR Button
 		AFRAME.registerComponent('go-listener', {
 
@@ -113,7 +87,6 @@
 				});
 			}
 		});
-
 
 		AFRAME.registerComponent('cursor-listener', {
 
@@ -330,6 +303,68 @@
 				});
 			}
 		});
+
+		AFRAME.registerComponent('close-listener', {
+
+			schema: {
+				evidenceType: {type: 'string'}
+			},
+
+			init: function () {
+
+				var data = this.data;
+				var $cigaretteHUD = document.getElementById('CigaretteHUD');
+				var $footPrintHUD = document.getElementById('FootPrintHUD');
+
+				this.el.addEventListener('click', function () {
+
+					switch(data.evidenceType) {
+						case 'Cigarette':
+							$cigaretteHUD.setAttribute('visible', 'false');
+							break;
+						case 'Footprint':
+							$footPrintHUD.setAttribute('visible', 'false');
+							break;
+						case 'Glass Fragments':
+							$glassFragmentsBanner.setAttribute('visible', 'true');
+							break;
+						case 'Door Handle':
+							$doorHandleBanner.setAttribute('visible', 'true');
+							break;
+						case 'Finger Print':
+							$fingerPrintBanner.setAttribute('visible', 'true');
+							break;
+						case 'Carpet Mark':
+							$carpetBanner.setAttribute('visible', 'true');
+							break;
+						case 'iMac':
+							$iMacBanner.setAttribute('visible', 'true');
+							break;
+						case 'Fridge':
+							$fridgeBanner.setAttribute('visible', 'true');
+							break;
+						case 'Mobile':
+							$mobileBanner.setAttribute('visible', 'true');
+							break;
+						case 'BackDoor':
+							$backDoorBanner.setAttribute('visible', 'true');
+							break;
+						case 'Body':
+							$bodyBanner.setAttribute('visible', 'true');
+							break;
+						case 'Hammer':
+							$hammerBanner.setAttribute('visible', 'true');
+							break;
+						case 'Keys':
+							$keysBanner.setAttribute('visible', 'true');
+							break;
+						case 'CCTV':
+							$CCTVBanner.setAttribute('visible', 'true');
+							break;
+					}
+				});
+			}
+		});
 	</script>
 </head>
 <body>
@@ -351,6 +386,9 @@
 
 		<!-- Enter VR Image -->
 		<img id="EnterVRImage" src="assets/img/go.gif">
+
+		<!-- Close HUD Image -->
+		<img id="CloseHUDImage" src="assets/img/close-icon.png">
 
 		<!-- Sky -->
 		<img id="SkyBox" src="assets/img/sky.jpg">
@@ -795,6 +833,41 @@
 				 visible="false"
 				 look-at="#RightHand"></a-image>
 
+		<!-- Info Displays -->
+		<a-entity id="CigaretteHUD"
+				  position="12.28 1.5 -2.50"
+				  rotation="0 290 0"
+				  visible="false">
+			<a-image src="#SlideOneImage"
+					 geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+			<a-image src="#CloseHUDImage"
+					 class="clickable"
+					 close-listener="evidenceType: Cigarette"
+					 height="0.2"
+					 width="0.2"
+					 position="0.5 0.4 0.05"></a-image>
+		</a-entity>
+
+		<a-entity id="FootPrintHUD"
+				  position="10.2 1.5 -3.8"
+				  rotation="0 0 0"
+				  visible="false">
+			<a-image src="#SlideTwoImage"
+					 geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+			<a-image src="#CloseHUDImage"
+					 class="clickable"
+					 close-listener="evidenceType: Footprint"
+					 height="0.2"
+					 width="0.2"
+					 position="0.5 0.4 0.05"></a-image>
+		</a-entity>
+
+		<a-video id="VideoHUD"
+				 height="0.6"
+				 width="1.2"
+				 position="0 0 -1"
+				 visible="false"></a-video>
+
 		<!-- Turf Lane -->
 		<a-entity id="TurfLane"
 				  collada-model="#TurfLaneCollada"
@@ -956,26 +1029,6 @@
 
 	<!-- Teleporter -->
 	<a-entity id="RightHand" custom-vive-controls vive-cursor="objects: .clickable" vive-controls="hand: right"></a-entity>
-
-	<a-image id="CigaretteHUD"
-			 src="#SlideOneImage"
-			 geometry="primitive: plane; height: 0.75; width: 1.0"
-			 position="12.28 1.5 -2.50"
-			 rotation="0 290 0"
-			 visible="false"></a-image>
-
-	<a-image id="FootPrintHUD"
-			 src="#SlideTwoImage"
-			 geometry="primitive: plane; height: 0.75; width: 1.0"
-			 position="10.2 1.5 -3.8"
-			 rotation="0 0 0"
-			 visible="false"></a-image>
-
-	<a-video id="VideoHUD"
-			 height="0.6"
-			 width="1.2"
-			 position="0 0 -1"
-			 visible="false"></a-video>
 </a-scene>
 </body>
 </html>
