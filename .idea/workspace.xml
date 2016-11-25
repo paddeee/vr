@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="79cdede7-07f6-48da-a2e3-775d8e19bddf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-fixed.html" afterPath="$PROJECT_DIR$/index-fixed.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-fixed.html" afterPath="$PROJECT_DIR$/mobile-fixed.html" />
     </list>
     <ignored path="aframe-boilerplate.iws" />
@@ -24,20 +23,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mobile-fixed.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mobile-fixed.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="331" column="55" selection-start-line="331" selection-start-column="55" selection-end-line="331" selection-end-column="55" />
+            <state relative-caret-position="114">
+              <caret line="957" column="29" selection-start-line="957" selection-start-column="29" selection-end-line="957" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index-fixed.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index-fixed.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index-fixed.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-14434">
+            <state relative-caret-position="-14740">
               <caret line="116" column="76" selection-start-line="116" selection-start-column="76" selection-end-line="116" selection-end-column="76" />
               <folding />
             </state>
@@ -111,8 +110,8 @@
         <option value="$PROJECT_DIR$/index-hud.html" />
         <option value="$PROJECT_DIR$/lib/aframe.min.js" />
         <option value="$PROJECT_DIR$/mobile-hud.html" />
-        <option value="$PROJECT_DIR$/mobile-fixed.html" />
         <option value="$PROJECT_DIR$/index-fixed.html" />
+        <option value="$PROJECT_DIR$/mobile-fixed.html" />
       </list>
     </option>
   </component>
@@ -128,10 +127,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="y" value="2" />
-    <option name="width" value="1746" />
-    <option name="height" value="1054" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1279" />
+    <option name="height" value="719" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -359,7 +358,7 @@
       <workItem from="1479458628998" duration="4683000" />
       <workItem from="1479465097573" duration="4625000" />
       <workItem from="1479746415758" duration="972000" />
-      <workItem from="1479748474295" duration="51958000" />
+      <workItem from="1479748474295" duration="66675000" />
     </task>
     <task id="LOCAL-00001" summary="Vive teleport and cursor contrrols working'">
       <created>1478782814488</created>
@@ -508,25 +507,32 @@
       <option name="project" value="LOCAL" />
       <updated>1479921996665</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Close buttons added to Fixed HUDS">
+      <created>1479924216132</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1479924216132</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="251843000" />
+    <option name="totallyTimeSpent" value="266560000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="2" width="1746" height="1054" extended-state="0" />
+    <frame x="1" y="1" width="1279" height="719" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17857143" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24576955" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3170467" sideWeight="0.5023419" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3170467" sideWeight="0.49765807" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3170467" sideWeight="0.49765807" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19869708" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19795223" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -590,7 +596,8 @@
     <MESSAGE value="Passable Loading Setup added" />
     <MESSAGE value="All version files ready" />
     <MESSAGE value="Fixed versions ready to add info huds" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed versions ready to add info huds" />
+    <MESSAGE value="Close buttons added to Fixed HUDS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Close buttons added to Fixed HUDS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -982,18 +989,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
+    <entry file="file://$PROJECT_DIR$/index-fixed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="331" column="55" selection-start-line="331" selection-start-column="55" selection-end-line="331" selection-end-column="55" />
+        <state relative-caret-position="-14740">
+          <caret line="116" column="76" selection-start-line="116" selection-start-column="76" selection-end-line="116" selection-end-column="76" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index-fixed.html">
+    <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14434">
-          <caret line="116" column="76" selection-start-line="116" selection-start-column="76" selection-end-line="116" selection-end-column="76" />
+        <state relative-caret-position="114">
+          <caret line="957" column="29" selection-start-line="957" selection-start-column="29" selection-end-line="957" selection-end-column="29" />
           <folding />
         </state>
       </provider>

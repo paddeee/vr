@@ -20,8 +20,8 @@
     </style>
 
     <!-- Networked
-    <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe.min.js"></script>
-    <script src="https://rawgit.com/ngokevin/kframe/master/dist/kframe.min.js"></script> -->
+    <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe-master.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/kframe/master/dist/kframe.min.js"></script>
 
     <!-- Offline -->
     <script src="lib//aframe.min.js"></script>
@@ -49,14 +49,11 @@
             },
 
             init: function () {
-
                 var data = this.data;
-                var $callAudioSourceFile = document.getElementById('PhoneCallSourceFile');
                 var $infoIcons = document.querySelectorAll('.info-icon');
                 var $bannerImages= document.querySelectorAll('.banner-image');
                 var $cigaretteBanner = document.getElementById('CigaretteBanner');
                 var $footPrintBanner = document.getElementById('FootPrintBanner');
-                /*var $brokenWindowBanner = document.getElementById('BrokenWindowBanner');*/
                 var $glassFragmentsBanner = document.getElementById('GlassFragmentsBanner');
                 var $doorHandleBanner = document.getElementById('DoorHandleBanner');
                 var $fingerPrintBanner = document.getElementById('TVFingerprintBanner');
@@ -71,10 +68,21 @@
                 var $CCTVBanner = document.getElementById('CCTVBanner');
                 var $cigaretteHUD = document.getElementById('CigaretteHUD');
                 var $footPrintHUD = document.getElementById('FootPrintHUD');
+                var $glassFragmentsHUD = document.getElementById('GlassFragmentsHUD');
+                var $doorHandleHUD = document.getElementById('DoorHandleHUD');
+                var $fingerPrintHUD = document.getElementById('FingerPrintHUD');
+                var $carpetHUD = document.getElementById('CarpetHUD');
+                var $iMacHUD = document.getElementById('IMacHUD');
+                var $fridgeHUD = document.getElementById('FridgeHUD');
+                var $mobileHUD = document.getElementById('MobileHUD');
+                var $backDoorHUD = document.getElementById('BackDoorHUD');
+                var $bodyHUD = document.getElementById('BodyHUD');
+                var $hammerHUD = document.getElementById('HammerHUD');
+                var $keysHUD = document.getElementById('KeysHUD');
+                var $CCTVHUD = document.getElementById('CCTVHUD');
                 var $dialToneElement = document.getElementById('DialToneElement');
                 var $callSourceFile = document.getElementById('PhoneCallSourceFile');
                 var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
-                var $videoHUD = document.getElementById('VideoHUD');
 
                 this.el.addEventListener('mouseenter', function (event) {
 
@@ -145,51 +153,32 @@
                             $cigaretteHUD.setAttribute('visible', 'true');
                             break;
                         case 'Footprint':
-
                             $footPrintBanner.setAttribute('visible', 'false');
                             $footPrintHUD.setAttribute('visible', 'true');
                             break;
                         case 'Glass Fragments':
-
                             $glassFragmentsBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideFourImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $glassFragmentsHUD.setAttribute('visible', 'true');
                             break;
                         case 'Door Handle':
-
                             $doorHandleBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideFiveImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $doorHandleHUD.setAttribute('visible', 'true');
                             break;
                         case 'Finger Print':
-
                             $fingerPrintBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideSixImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $fingerPrintHUD.setAttribute('visible', 'true');
                             break;
                         case 'Carpet Mark':
-
                             $carpetBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideSevenImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $carpetHUD.setAttribute('visible', 'true');
                             break;
                         case 'iMac':
-
                             $iMacBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideEightImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $iMacHUD.setAttribute('visible', 'true');
                             break;
                         case 'Fridge':
-
                             $fridgeBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideNineImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $fridgeHUD.setAttribute('visible', 'true');
                             break;
                         case 'Mobile':
 
@@ -203,45 +192,32 @@
                             }
 
                             $callSourceFile.play();
-                            $mobileBanner.setAttribute('visible', 'false');
 
-                            $imageHUD.setAttribute('src', '#SlideTenImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $mobileBanner.setAttribute('visible', 'false');
+                            $mobileHUD.setAttribute('visible', 'true');
                             break;
                         case 'BackDoor':
-
                             $backDoorBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideElevenImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $backDoorHUD.setAttribute('visible', 'true');
                             break;
                         case 'Body':
-
                             $bodyBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideTwelveImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $bodyHUD.setAttribute('visible', 'true');
                             break;
                         case 'Hammer':
-
                             $hammerBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideEighteenImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $hammerHUD.setAttribute('visible', 'true');
                             break;
                         case 'Keys':
-
                             $keysBanner.setAttribute('visible', 'false');
-
-                            $imageHUD.setAttribute('src', '#SlideNineteenImage');
-                            $imageHUD.setAttribute('visible', 'true');
+                            $keysHUD.setAttribute('visible', 'true');
                             break;
                         case 'CCTV':
 
                             $CCTVBanner.setAttribute('visible', 'false');
 
-                            $videoHUD.setAttribute('src', '#CCTVVideoSourceFile');
-                            $videoHUD.setAttribute('visible', 'true');
+                            $CCTVHUD.setAttribute('src', '#CCTVVideoSourceFile');
+                            $CCTVHUD.setAttribute('visible', 'true');
                             break;
                     }
                 });
@@ -259,6 +235,28 @@
                 var data = this.data;
                 var $cigaretteHUD = document.getElementById('CigaretteHUD');
                 var $footPrintHUD = document.getElementById('FootPrintHUD');
+                var $glassFragmentsHUD = document.getElementById('GlassFragmentsHUD');
+                var $doorHandleHUD = document.getElementById('DoorHandleHUD');
+                var $fingerPrintHUD = document.getElementById('FingerPrintHUD');
+                var $carpetHUD = document.getElementById('CarpetHUD');
+                var $iMacHUD = document.getElementById('IMacHUD');
+                var $fridgeHUD = document.getElementById('FridgeHUD');
+                var $mobileHUD = document.getElementById('MobileHUD');
+                var $backDoorHUD = document.getElementById('BackDoorHUD');
+                var $bodyHUD = document.getElementById('BodyHUD');
+                var $hammerHUD = document.getElementById('HammerHUD');
+                var $keysHUD = document.getElementById('KeysHUD');
+                var $CCTVHUD = document.getElementById('CCTVHUD');
+
+                this.el.addEventListener('mouseenter', function () {
+                    console.log('Close Grow Emitted');
+                    this.el.emit('closegrow');
+                }.bind(this));
+
+                this.el.addEventListener('mouseleave', function () {
+                    console.log('Close Shrink Emitted');
+                    this.el.emit('closeshrink');
+                }.bind(this));
 
                 this.el.addEventListener('click', function () {
 
@@ -270,40 +268,40 @@
                             $footPrintHUD.setAttribute('visible', 'false');
                             break;
                         case 'Glass Fragments':
-                            $glassFragmentsBanner.setAttribute('visible', 'true');
+                            $glassFragmentsHUD.setAttribute('visible', 'false');
                             break;
                         case 'Door Handle':
-                            $doorHandleBanner.setAttribute('visible', 'true');
+                            $doorHandleHUD.setAttribute('visible', 'false');
                             break;
                         case 'Finger Print':
-                            $fingerPrintBanner.setAttribute('visible', 'true');
+                            $fingerPrintHUD.setAttribute('visible', 'false');
                             break;
                         case 'Carpet Mark':
-                            $carpetBanner.setAttribute('visible', 'true');
+                            $carpetHUD.setAttribute('visible', 'false');
                             break;
                         case 'iMac':
-                            $iMacBanner.setAttribute('visible', 'true');
+                            $iMacHUD.setAttribute('visible', 'false');
                             break;
                         case 'Fridge':
-                            $fridgeBanner.setAttribute('visible', 'true');
+                            $fridgeHUD.setAttribute('visible', 'false');
                             break;
                         case 'Mobile':
-                            $mobileBanner.setAttribute('visible', 'true');
+                            $mobileHUD.setAttribute('visible', 'false');
                             break;
                         case 'BackDoor':
-                            $backDoorBanner.setAttribute('visible', 'true');
+                            $backDoorHUD.setAttribute('visible', 'false');
                             break;
                         case 'Body':
-                            $bodyBanner.setAttribute('visible', 'true');
+                            $bodyHUD.setAttribute('visible', 'false');
                             break;
                         case 'Hammer':
-                            $hammerBanner.setAttribute('visible', 'true');
+                            $hammerHUD.setAttribute('visible', 'false');
                             break;
                         case 'Keys':
-                            $keysBanner.setAttribute('visible', 'true');
+                            $keysHUD.setAttribute('visible', 'false');
                             break;
                         case 'CCTV':
-                            $CCTVBanner.setAttribute('visible', 'true');
+                            $CCTVHUD.setAttribute('visible', 'false');
                             break;
                     }
                 });
@@ -438,18 +436,6 @@
                      position="10.23 0.83 -3.92"
                      sound="on: click; src: #click-sound"
                      look-at="#RightHand"></a-image>
-
-            <!-- <a-image id="BrokenWindowIcon"
-                     class="info-icon clickable"
-                     cursor-listener="evidenceType: Fibres;"
-                     src="#InfoImage"
-                     height="0.2"
-                     width="0.2"
-                     depth="0.2"
-                     opacity="0.4"
-                     position="10.16 2.2 -4.8"
-                     sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image> -->
 
             <a-image id="GlassFragmentsIcon"
                      class="info-icon clickable"
@@ -759,7 +745,10 @@
                      close-listener="evidenceType: Cigarette"
                      height="0.2"
                      width="0.2"
-                     position="0.5 0.4 0.05"></a-image>
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
         </a-entity>
 
         <a-entity id="FootPrintHUD"
@@ -773,14 +762,215 @@
                      close-listener="evidenceType: Footprint"
                      height="0.2"
                      width="0.2"
-                     position="0.5 0.4 0.05"></a-image>
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
         </a-entity>
 
-        <a-video id="VideoHUD"
+        <a-entity id="GlassFragmentsHUD"
+                  position="10.2 1.5 -4.2"
+                  rotation="0 0 0"
+                  visible="false">
+            <a-image src="#SlideFourImage"
+                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+            <a-image src="#CloseHUDImage"
+                     class="clickable"
+                     close-listener="evidenceType: Glass Fragments"
+                     height="0.2"
+                     width="0.2"
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
+        </a-entity>
+
+        <a-entity id="DoorHandleHUD"
+                  position="11.15 1.5 -6.3"
+                  rotation="0 30 0"
+                  visible="false">
+            <a-image src="#SlideFiveImage"
+                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+            <a-image src="#CloseHUDImage"
+                     class="clickable"
+                     close-listener="evidenceType: Door Handle"
+                     height="0.2"
+                     width="0.2"
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
+        </a-entity>
+
+        <a-entity id="FingerPrintHUD"
+                  position="13.1 1.75 -5.55"
+                  rotation="0 230 0"
+                  visible="false">
+            <a-image src="#SlideSixImage"
+                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+            <a-image src="#CloseHUDImage"
+                     class="clickable"
+                     close-listener="evidenceType: Finger Print"
+                     height="0.2"
+                     width="0.2"
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
+        </a-entity>
+
+        <a-entity id="CarpetHUD"
+                  position="12.3 1.5 -6.6"
+                  rotation="0 260 0"
+                  visible="false">
+            <a-image src="#SlideSevenImage"
+                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+            <a-image src="#CloseHUDImage"
+                     class="clickable"
+                     close-listener="evidenceType: Carpet Mark"
+                     height="0.2"
+                     width="0.2"
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
+        </a-entity>
+
+        <a-entity id="IMacHUD"
+                  position="11.7 1.5 -10.4"
+                  rotation="0 -30 0"
+                  visible="false">
+            <a-image src="#SlideEightImage"
+                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+            <a-image src="#CloseHUDImage"
+                     class="clickable"
+                     close-listener="evidenceType: iMac"
+                     height="0.2"
+                     width="0.2"
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
+        </a-entity>
+
+        <a-entity id="FridgeHUD"
+                  position="10.5 1.5 -11.2"
+                  rotation="0 30 0"
+                  visible="false">
+            <a-image src="#SlideNineImage"
+                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+            <a-image src="#CloseHUDImage"
+                     class="clickable"
+                     close-listener="evidenceType: Fridge"
+                     height="0.2"
+                     width="0.2"
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
+        </a-entity>
+
+        <a-entity id="MobileHUD"
+                  position="11.15 1.3 -11.1"
+                  rotation="0 0 0"
+                  visible="false">
+            <a-image src="#SlideTenImage"
+                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+            <a-image src="#CloseHUDImage"
+                     class="clickable"
+                     close-listener="evidenceType: Mobile"
+                     height="0.2"
+                     width="0.2"
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
+        </a-entity>
+
+        <a-entity id="BackDoorHUD"
+                  position="12.8 1.7 -13.4"
+                  rotation="0 210 0"
+                  visible="false">
+            <a-image src="#SlideElevenImage"
+                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+            <a-image src="#CloseHUDImage"
+                     class="clickable"
+                     close-listener="evidenceType: BackDoor"
+                     height="0.2"
+                     width="0.2"
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
+        </a-entity>
+
+        <a-entity id="BodyHUD"
+                  position="11.0 1.5 -11.3"
+                  rotation="0 0 0"
+                  visible="false">
+            <a-image src="#SlideTwelveImage"
+                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+            <a-image src="#CloseHUDImage"
+                     class="clickable"
+                     close-listener="evidenceType: Body"
+                     height="0.2"
+                     width="0.2"
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
+        </a-entity>
+
+        <a-entity id="HammerHUD"
+                  position="11.08 1.3 -13.9"
+                  rotation="0 0 0"
+                  visible="false">
+            <a-image src="#SlideThirteenImage"
+                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+            <a-image src="#CloseHUDImage"
+                     class="clickable"
+                     close-listener="evidenceType: Hammer"
+                     height="0.2"
+                     width="0.2"
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
+        </a-entity>
+
+        <a-entity id="KeysHUD"
+                  position="10.98 1.3 -12.9"
+                  rotation="0 0 0"
+                  visible="false">
+            <a-image src="#SlideTwentyImage"
+                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+            <a-image src="#CloseHUDImage"
+                     class="clickable"
+                     close-listener="evidenceType: Keys"
+                     height="0.2"
+                     width="0.2"
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
+        </a-entity>
+
+        <a-video id="CCTVHUD"
                  height="0.6"
                  width="1.2"
-                 position="0 0 -1"
-                 visible="false"></a-video>
+                 position="-2.5 1.7 -21.5"
+                 rotation="0 90 0"
+                 visible="false">
+            <a-image src="#CloseHUDImage"
+                     class="clickable"
+                     close-listener="evidenceType: CCTV"
+                     height="0.2"
+                     width="0.2"
+                     position="0.5 0.4 0.05">
+                <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
+                <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
+            </a-image>
+        </a-video>
 
         <!-- Turf Lane -->
         <a-entity id="TurfLane"
