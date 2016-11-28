@@ -49,23 +49,9 @@
             },
 
             init: function () {
+
                 var data = this.data;
                 var $infoIcons = document.querySelectorAll('.info-icon');
-                var $bannerImages= document.querySelectorAll('.banner-image');
-                var $cigaretteBanner = document.getElementById('CigaretteBanner');
-                var $footPrintBanner = document.getElementById('FootPrintBanner');
-                var $glassFragmentsBanner = document.getElementById('GlassFragmentsBanner');
-                var $doorHandleBanner = document.getElementById('DoorHandleBanner');
-                var $fingerPrintBanner = document.getElementById('TVFingerprintBanner');
-                var $carpetBanner = document.getElementById('CarpetBanner');
-                var $iMacBanner = document.getElementById('IMacBanner');
-                var $fridgeBanner = document.getElementById('FridgeBanner');
-                var $mobileBanner = document.getElementById('MobileBanner');
-                var $backDoorBanner = document.getElementById('BackDoorBanner');
-                var $bodyBanner = document.getElementById('BodyBanner');
-                var $hammerBanner = document.getElementById('HammerBanner');
-                var $keysBanner = document.getElementById('KeysBanner');
-                var $CCTVBanner = document.getElementById('CCTVBanner');
                 var $cigaretteHUD = document.getElementById('CigaretteHUD');
                 var $footPrintHUD = document.getElementById('FootPrintHUD');
                 var $glassFragmentsHUD = document.getElementById('GlassFragmentsHUD');
@@ -82,56 +68,9 @@
                 var $CCTVHUD = document.getElementById('CCTVHUD');
                 var $dialToneElement = document.getElementById('DialToneElement');
                 var $callSourceFile = document.getElementById('PhoneCallSourceFile');
-                var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
 
                 this.el.addEventListener('mouseenter', function (event) {
-
                     event.target.setAttribute('opacity', '1');
-
-                    switch(data.evidenceType) {
-                        case 'Cigarette':
-                            $cigaretteBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Footprint':
-                            $footPrintBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Glass Fragments':
-                            $glassFragmentsBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Door Handle':
-                            $doorHandleBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Finger Print':
-                            $fingerPrintBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Carpet Mark':
-                            $carpetBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'iMac':
-                            $iMacBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Fridge':
-                            $fridgeBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Mobile':
-                            $mobileBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'BackDoor':
-                            $backDoorBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Body':
-                            $bodyBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Hammer':
-                            $hammerBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'Keys':
-                            $keysBanner.setAttribute('visible', 'true');
-                            break;
-                        case 'CCTV':
-                            $CCTVBanner.setAttribute('visible', 'true');
-                            break;
-                    }
                 });
 
                 this.el.addEventListener('mouseleave', function () {
@@ -139,45 +78,33 @@
                     $infoIcons.forEach(function($infoIcon) {
                         $infoIcon.setAttribute('opacity', '0.5');
                     });
-
-                    $bannerImages.forEach(function($bannerImage) {
-                        $bannerImage.setAttribute('visible', 'false');
-                    });
                 });
 
                 this.el.addEventListener('click', function () {
 
                     switch(data.evidenceType) {
                         case 'Cigarette':
-                            $cigaretteBanner.setAttribute('visible', 'false');
                             $cigaretteHUD.setAttribute('visible', 'true');
                             break;
                         case 'Footprint':
-                            $footPrintBanner.setAttribute('visible', 'false');
                             $footPrintHUD.setAttribute('visible', 'true');
                             break;
                         case 'Glass Fragments':
-                            $glassFragmentsBanner.setAttribute('visible', 'false');
                             $glassFragmentsHUD.setAttribute('visible', 'true');
                             break;
                         case 'Door Handle':
-                            $doorHandleBanner.setAttribute('visible', 'false');
                             $doorHandleHUD.setAttribute('visible', 'true');
                             break;
                         case 'Finger Print':
-                            $fingerPrintBanner.setAttribute('visible', 'false');
                             $fingerPrintHUD.setAttribute('visible', 'true');
                             break;
                         case 'Carpet Mark':
-                            $carpetBanner.setAttribute('visible', 'false');
                             $carpetHUD.setAttribute('visible', 'true');
                             break;
                         case 'iMac':
-                            $iMacBanner.setAttribute('visible', 'false');
                             $iMacHUD.setAttribute('visible', 'true');
                             break;
                         case 'Fridge':
-                            $fridgeBanner.setAttribute('visible', 'false');
                             $fridgeHUD.setAttribute('visible', 'true');
                             break;
                         case 'Mobile':
@@ -193,29 +120,21 @@
 
                             $callSourceFile.play();
 
-                            $mobileBanner.setAttribute('visible', 'false');
                             $mobileHUD.setAttribute('visible', 'true');
                             break;
                         case 'BackDoor':
-                            $backDoorBanner.setAttribute('visible', 'false');
                             $backDoorHUD.setAttribute('visible', 'true');
                             break;
                         case 'Body':
-                            $bodyBanner.setAttribute('visible', 'false');
                             $bodyHUD.setAttribute('visible', 'true');
                             break;
                         case 'Hammer':
-                            $hammerBanner.setAttribute('visible', 'false');
                             $hammerHUD.setAttribute('visible', 'true');
                             break;
                         case 'Keys':
-                            $keysBanner.setAttribute('visible', 'false');
                             $keysHUD.setAttribute('visible', 'true');
                             break;
                         case 'CCTV':
-
-                            $CCTVBanner.setAttribute('visible', 'false');
-
                             $CCTVHUD.setAttribute('src', '#CCTVVideoSourceFile');
                             $CCTVHUD.setAttribute('visible', 'true');
                             break;
@@ -249,12 +168,10 @@
                 var $CCTVHUD = document.getElementById('CCTVHUD');
 
                 this.el.addEventListener('mouseenter', function () {
-                    console.log('Close Grow Emitted');
                     this.el.emit('closegrow');
                 }.bind(this));
 
                 this.el.addEventListener('mouseleave', function () {
-                    console.log('Close Shrink Emitted');
                     this.el.emit('closeshrink');
                 }.bind(this));
 
@@ -322,9 +239,7 @@
         <video id="PhoneCallSourceFile" preload="auto" src="assets/video/999Call.webm"></video>
 
         <!-- CCTV Video  -->
-        <video id="CCTVVideoSourceFile"
-               preload="auto"
-               src="assets/video/cctv.webm"></video>
+        <video id="CCTVVideoSourceFile" preload="auto" src="assets/video/cctv.webm"></video>
 
         <!-- Enter VR Image -->
         <img id="EnterVRImage" src="assets/img/go.gif">
@@ -346,28 +261,9 @@
         <!-- Info Image -->
         <img id="InfoImage" src="assets/img/magnify-icon.png">
 
-        <!--  Banner Images -->
-        <img id="BannerOneImage" src="assets/img/banner1.jpg">
-        <img id="BannerTwoImage" src="assets/img/banner2.jpg">
-        <!-- <img id="BannerThreeImage" src="assets/img/banner3.jpg"> -->
-        <img id="BannerFourImage" src="assets/img/banner4.jpg">
-        <img id="BannerFiveImage" src="assets/img/banner5.jpg">
-        <img id="BannerSixImage" src="assets/img/banner6.jpg">
-        <img id="BannerSevenImage" src="assets/img/banner7.jpg">
-        <img id="BannerEightImage" src="assets/img/banner8.jpg">
-        <img id="BannerNineImage" src="assets/img/banner9.jpg">
-        <img id="BannerTenImage" src="assets/img/banner10.jpg">
-        <img id="BannerElevenImage" src="assets/img/banner11.jpg">
-        <img id="BannerTwelveImage" src="assets/img/banner12.jpg">
-        <img id="BannerThirteenImage" src="assets/img/banner13.jpg">
-        <img id="BannerFourteenImage" src="assets/img/banner14.jpg">
-        <img id="BannerFifteenImage" src="assets/img/banner15.jpg">
-        <img id="BannerSixteenImage" src="assets/img/banner16.jpg">
-
         <!--  Slides -->
         <img id="SlideOneImage" src="assets/img/slide1.jpg">
         <img id="SlideTwoImage" src="assets/img/slide2.jpg">
-        <!--  <img id="SlideThreeImage" src="assets/img/slide3.jpg"> -->
         <img id="SlideFourImage" src="assets/img/slide4.jpg">
         <img id="SlideFiveImage" src="assets/img/slide5.jpg">
         <img id="SlideSixImage" src="assets/img/slide6.jpg">
@@ -423,7 +319,7 @@
                      opacity="0.4"
                      position="12.23 0.83 -2.62"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="FootPrintInfoIcon"
                      class="info-icon clickable"
@@ -435,7 +331,7 @@
                      opacity="0.4"
                      position="10.23 0.83 -3.92"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="GlassFragmentsIcon"
                      class="info-icon clickable"
@@ -447,7 +343,7 @@
                      opacity="0.4"
                      position="10.16 1.8 -4.8"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="DoorHandleIcon"
                      class="info-icon clickable"
@@ -459,7 +355,7 @@
                      opacity="0.4"
                      position="10.66 1.65 -6.2"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="TVInfoIcon"
                      class="info-icon clickable"
@@ -471,7 +367,7 @@
                      opacity="0.4"
                      position="13.3 1.44 -5.3"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="CarpetIcon"
                      class="info-icon clickable"
@@ -483,7 +379,7 @@
                      opacity="0.4"
                      position="12.3 0.8 -6.6"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="IMacIcon"
                      class="info-icon clickable"
@@ -495,7 +391,7 @@
                      opacity="0.4"
                      position="11.7 0.91 -10.4"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="FridgeIcon"
                      class="info-icon clickable"
@@ -507,7 +403,7 @@
                      opacity="0.4"
                      position="10.6 2.0 -12.0"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="MobileIcon"
                      class="info-icon clickable"
@@ -519,7 +415,7 @@
                      opacity="0.4"
                      position="10.5 1.0 -11.2"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="BackDoorIcon"
                      class="info-icon clickable"
@@ -531,7 +427,7 @@
                      opacity="0.4"
                      position="12.4 1.5 -13.0"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="BodyIcon"
                      class="info-icon clickable"
@@ -543,7 +439,7 @@
                      opacity="0.4"
                      position="11 1.01 -11.4"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="HammerIcon"
                      class="info-icon clickable"
@@ -555,7 +451,7 @@
                      opacity="0.4"
                      position="11.08 0.72 -13.9"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="KeysIcon"
                      class="info-icon clickable"
@@ -567,236 +463,86 @@
                      opacity="0.4"
                      position="10.58 0.72 -12.9"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
             <a-image id="CCTVIcon"
-                     class="clickable"
+                     class="info-icon clickable"
                      cursor-listener="evidenceType: CCTV;"
                      src="#InfoImage"
                      height="0.2"
                      width="0.2"
                      depth="0.2"
+                     opacity="0.4"
                      position="-3.5 1.7 -21.5"
                      sound="on: click; src: #click-sound"
-                     look-at="#RightHand"></a-image>
+                     look-at="#Camera"></a-image>
 
         </a-entity>
 
-        <!-- Banner Images -->
-        <a-image id="CigaretteBanner"
-                 class="banner-image"
-                 src="#BannerOneImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="12.23 1.13 -2.62"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <a-image id="FootPrintBanner"
-                 class="banner-image"
-                 src="#BannerTwoImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="10.23 1.133 -3.92"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <!-- <a-image id="BrokenWindowBanner"
-                 class="banner-image"
-                 src="#BannerThreeImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="10.16 2.05 -3.8"
-                 visible="false"
-                 look-at="#RightHand"></a-image> -->
-
-        <a-image id="GlassFragmentsBanner"
-                 class="banner-image"
-                 src="#BannerFourImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="10.16 1.95 -4.2"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <a-image id="DoorHandleBanner"
-                 class="banner-image"
-                 src="#BannerFiveImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="10.66 1.95 -6.4"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <a-image id="TVFingerprintBanner"
-                 class="banner-image"
-                 src="#BannerSixImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="13.1 1.75 -5.25"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <a-image id="CarpetBanner"
-                 class="banner-image"
-                 src="#BannerSevenImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="12.3 1.1 -6.6"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <a-image id="IMacBanner"
-                 class="banner-image"
-                 src="#BannerEightImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="11.7 1.21 -10.4"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <a-image id="FridgeBanner"
-                 class="banner-image"
-                 src="#BannerNineImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="11.05 2.0 -12.4"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <a-image id="MobileBanner"
-                 class="banner-image"
-                 src="#BannerTenImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="11.0 1.0 -11.2"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <a-image id="BackDoorBanner"
-                 class="banner-image"
-                 src="#BannerElevenImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="12.4 1.8 -13.5"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <a-image id="BodyBanner"
-                 class="banner-image"
-                 src="#BannerTwelveImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="11 1.31 -11.1"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <a-image id="HammerBanner"
-                 class="banner-image"
-                 src="#BannerThirteenImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="11.08 1.02 -13.9"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <a-image id="KeysBanner"
-                 class="banner-image"
-                 src="#BannerFourteenImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="10.88 1.02 -12.9"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
-        <a-image id="CCTVBanner"
-                 class="banner-image"
-                 src="#BannerFifteenImage"
-                 height="0.3"
-                 width="0.8"
-                 depth="0.1"
-                 position="-3.5 2.0 -21.5"
-                 visible="false"
-                 look-at="#RightHand"></a-image>
-
         <!-- Info Displays -->
         <a-entity id="CigaretteHUD"
-                  position="12.28 1.5 -2.50"
-                  rotation="0 290 0"
-                  visible="false">
+                  position="12.28 1.7 -2.60"
+                  visible="false"
+                  look-at="#Camera">
             <a-image src="#SlideOneImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: Cigarette"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
         </a-entity>
 
         <a-entity id="FootPrintHUD"
-                  position="10.2 1.5 -3.8"
-                  rotation="0 0 0"
-                  visible="false">
+                  position="10.2 1.7 -3.8"
+                  visible="false"
+                  look-at="#Camera">
             <a-image src="#SlideTwoImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: Footprint"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
         </a-entity>
 
         <a-entity id="GlassFragmentsHUD"
-                  position="10.2 1.5 -4.2"
-                  rotation="0 0 0"
-                  visible="false">
+                  position="10.2 1.7 -4.2"
+                  visible="false"
+                  look-at="#Camera">
             <a-image src="#SlideFourImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: Glass Fragments"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
         </a-entity>
 
         <a-entity id="DoorHandleHUD"
-                  position="11.15 1.5 -6.3"
-                  rotation="0 30 0"
-                  visible="false">
+                  position="11.15 1.7 -6.3"
+                  visible="false"
+                  look-at="#Camera">
             <a-image src="#SlideFiveImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: Door Handle"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
@@ -804,152 +550,152 @@
 
         <a-entity id="FingerPrintHUD"
                   position="13.1 1.75 -5.55"
-                  rotation="0 230 0"
-                  visible="false">
+                  visible="false"
+                  look-at="#Camera">
             <a-image src="#SlideSixImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: Finger Print"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
         </a-entity>
 
         <a-entity id="CarpetHUD"
-                  position="12.3 1.5 -6.6"
-                  rotation="0 260 0"
-                  visible="false">
+                  position="12.3 1.7 -6.6"
+                  visible="false"
+                  look-at="#Camera">
             <a-image src="#SlideSevenImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: Carpet Mark"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
         </a-entity>
 
         <a-entity id="IMacHUD"
-                  position="11.7 1.5 -10.4"
-                  rotation="0 -30 0"
-                  visible="false">
+                  position="11.7 1.7 -10.4"
+                  visible="false"
+                  look-at="#Camera">
             <a-image src="#SlideEightImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: iMac"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
         </a-entity>
 
         <a-entity id="FridgeHUD"
-                  position="10.5 1.5 -11.2"
-                  rotation="0 30 0"
-                  visible="false">
+                  position="11.1 1.7 -12.2"
+                  visible="false"
+                  look-at="#Camera">
             <a-image src="#SlideNineImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: Fridge"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
         </a-entity>
 
         <a-entity id="MobileHUD"
-                  position="11.15 1.3 -11.1"
-                  rotation="0 0 0"
-                  visible="false">
+                  position="11.15 1.7 -11.1"
+                  visible="false"
+                  look-at="#Camera">
             <a-image src="#SlideTenImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: Mobile"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
         </a-entity>
 
         <a-entity id="BackDoorHUD"
-                  position="12.8 1.7 -13.4"
-                  rotation="0 210 0"
-                  visible="false">
+                  position="12.3 1.7 -13.4"
+                  visible="false"
+                  look-at="#Camera">
             <a-image src="#SlideElevenImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: BackDoor"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
         </a-entity>
 
         <a-entity id="BodyHUD"
-                  position="11.0 1.5 -11.3"
-                  rotation="0 0 0"
-                  visible="false">
+                  position="11.0 1.7 -11.3"
+                  visible="false"
+                  look-at="#Camera">
             <a-image src="#SlideTwelveImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: Body"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
         </a-entity>
 
         <a-entity id="HammerHUD"
-                  position="11.08 1.3 -13.9"
-                  rotation="0 0 0"
-                  visible="false">
-            <a-image src="#SlideThirteenImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                  position="11.08 1.7 -13.9"
+                  visible="false"
+                  look-at="#Camera">
+            <a-image src="#SlideEighteenImage"
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: Hammer"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
         </a-entity>
 
         <a-entity id="KeysHUD"
-                  position="10.98 1.3 -12.9"
-                  rotation="0 0 0"
-                  visible="false">
-            <a-image src="#SlideTwentyImage"
-                     geometry="primitive: plane; height: 0.75; width: 1.0"></a-image>
+                  position="10.98 1.7 -12.9"
+                  visible="false"
+                  look-at="#Camera">
+            <a-image src="#SlideNineteenImage"
+                     geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: Keys"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.22 0.18 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
@@ -959,14 +705,14 @@
                  height="0.6"
                  width="1.2"
                  position="-2.5 1.7 -21.5"
-                 rotation="0 90 0"
-                 visible="false">
+                 visible="false"
+                 look-at="#Camera">
             <a-image src="#CloseHUDImage"
                      class="clickable"
                      close-listener="evidenceType: CCTV"
-                     height="0.2"
-                     width="0.2"
-                     position="0.5 0.4 0.05">
+                     height="0.1"
+                     width="0.1"
+                     position="0.55 0.3 0.05">
                 <a-animation attribute="scale" begin="closegrow" from="1.0 1.0 1.0" to="1.5 1.5 1.5" dur="400"></a-animation>
                 <a-animation attribute="scale" begin="closeshrink" from="1.5 1.5 1.5" to="1.0 1.0 1.0" dur="400"></a-animation>
             </a-image>
@@ -1042,7 +788,7 @@
 
         <a-sound id="DialToneElement"
                  src="#DialToneSourceFile"
-                 volume="0.25"
+                 volume="0.1"
                  loop="true"
                  height="0.81"
                  width="1.2"
@@ -1128,7 +874,7 @@
         <a-entity id="User"
                   position="3 0 0"
                   rotation="0 0 0">
-            <a-camera id="RightHand">
+            <a-camera id="Camera">
 
                 <a-cursor id="cursor" objects=".clickable" color="#009ec2">
                     <a-animation begin="click" easing="ease-in" attribute="scale"
