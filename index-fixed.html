@@ -58,24 +58,6 @@
 			});
 		});
 
-        AFRAME.registerComponent('custom-vive-controls', {
-
-            init: function () {
-
-                var $callAudioSourceFile = document.getElementById('PhoneCallSourceFile');
-                var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
-
-                this.el.addEventListener('triggerdown', function () {
-
-                    $CCTVVideoSourceFile.currentTime = 0;
-                    $CCTVVideoSourceFile.pause();
-                    $callAudioSourceFile.currentTime = 0;
-                    $callAudioSourceFile.pause();
-                    viewingInfo = false;
-                });
-            }
-        });
-
 		// Handle the Enter VR Button
 		AFRAME.registerComponent('go-listener', {
 
@@ -135,6 +117,7 @@
 				var $CCTVHUD = document.getElementById('CCTVHUD');
 				var $dialToneElement = document.getElementById('DialToneElement');
 				var $callSourceFile = document.getElementById('PhoneCallSourceFile');
+				var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
 
 				this.el.addEventListener('mouseenter', function (event) {
 					event.target.setAttribute('opacity', '1');
@@ -202,7 +185,17 @@
 							$keysHUD.setAttribute('visible', 'true');
 							break;
 						case 'CCTV':
-							$CCTVHUD.setAttribute('src', '#CCTVVideoSourceFile');
+
+							// Reset CCTV if already playing
+							if ($CCTVVideoSourceFile.paused === 'false') {
+								$CCTVVideoSourceFile.currentTime = 0;
+								$CCTVVideoSourceFile.pause();
+							} else {
+								$CCTVHUD.setAttribute('src', '#CCTVVideoSourceFile');
+							}
+
+							$CCTVVideoSourceFile.play();
+
 							$CCTVHUD.setAttribute('visible', 'true');
 							break;
 					}
@@ -233,6 +226,8 @@
 				var $hammerHUD = document.getElementById('HammerHUD');
 				var $keysHUD = document.getElementById('KeysHUD');
 				var $CCTVHUD = document.getElementById('CCTVHUD');
+				var $callSourceFile = document.getElementById('PhoneCallSourceFile');
+				var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
 
 				this.el.addEventListener('mouseenter', function () {
 					console.log('Close Grow Emitted');
@@ -273,6 +268,8 @@
 							break;
 						case 'Mobile':
 							$mobileHUD.setAttribute('visible', 'false');
+							$callSourceFile.pause();
+							$callSourceFile.currentTime = 0;
 							break;
 						case 'BackDoor':
 							$backDoorHUD.setAttribute('visible', 'false');
@@ -288,6 +285,8 @@
 							break;
 						case 'CCTV':
 							$CCTVHUD.setAttribute('visible', 'false');
+							$CCTVVideoSourceFile.pause();
+							$CCTVVideoSourceFile.currentTime = 0;
 							break;
 					}
 				});
