@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="79cdede7-07f6-48da-a2e3-775d8e19bddf" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/You%27re_on_your_own.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/sign-down.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/sign-up.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-fixed.html" afterPath="$PROJECT_DIR$/index-fixed.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/aframe.min.js" afterPath="$PROJECT_DIR$/lib/aframe.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-fixed.html" afterPath="$PROJECT_DIR$/mobile-fixed.html" />
     </list>
     <ignored path="aframe-boilerplate.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,8 +38,8 @@
       <file leaf-file-name="index-fixed.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index-fixed.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="277" column="70" selection-start-line="277" selection-start-column="70" selection-end-line="277" selection-end-column="70" />
+            <state relative-caret-position="447">
+              <caret line="286" column="70" selection-start-line="286" selection-start-column="70" selection-end-line="286" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -337,7 +337,7 @@
       <workItem from="1479748474295" duration="67823000" />
       <workItem from="1480092495406" duration="1371000" />
       <workItem from="1480327589850" duration="6826000" />
-      <workItem from="1480342381360" duration="3128000" />
+      <workItem from="1480342381360" duration="3787000" />
     </task>
     <task id="LOCAL-00001" summary="Vive teleport and cursor contrrols working'">
       <created>1478782814488</created>
@@ -507,15 +507,22 @@
       <option name="project" value="LOCAL" />
       <updated>1480342437996</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Fix for autoplaying video">
+      <created>1480414629878</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1480414629878</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="279033000" />
+    <option name="totallyTimeSpent" value="279692000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1934" height="1094" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16782099" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -524,7 +531,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32138857" sideWeight="0.49765807" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20156775" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26539755" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -567,7 +574,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Vive teleport and cursor contrrols working'" />
     <MESSAGE value="Cursor controls nailed down" />
     <MESSAGE value="Floor path sorted" />
     <MESSAGE value="Video working with webm'" />
@@ -592,7 +598,8 @@
     <MESSAGE value="Close buttons added to Fixed HUDS" />
     <MESSAGE value="Fixed Position Info added to Mobile" />
     <MESSAGE value="Hide icons by default" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hide icons by default" />
+    <MESSAGE value="Fix for autoplaying video" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix for autoplaying video" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -984,8 +991,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index-fixed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="277" column="70" selection-start-line="277" selection-start-column="70" selection-end-line="277" selection-end-column="70" />
+        <state relative-caret-position="447">
+          <caret line="286" column="70" selection-start-line="286" selection-start-column="70" selection-end-line="286" selection-end-column="70" />
           <folding />
         </state>
       </provider>
