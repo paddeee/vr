@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="79cdede7-07f6-48da-a2e3-775d8e19bddf" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index-hud.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-hud.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/index-fixed.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-fixed.html" afterPath="$PROJECT_DIR$/index-fixed.html" />
     </list>
     <ignored path="aframe-boilerplate.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,21 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mobile-fixed.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mobile-fixed.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="738" column="43" selection-start-line="738" selection-start-column="27" selection-end-line="738" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index-fixed.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index-fixed.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2108">
-              <caret line="187" column="76" selection-start-line="187" selection-start-column="76" selection-end-line="187" selection-end-column="76" />
+            <state relative-caret-position="193">
+              <caret line="706" column="87" selection-start-line="706" selection-start-column="87" selection-end-line="706" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -56,28 +48,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15011">
-              <caret line="883" column="32" selection-start-line="883" selection-start-column="32" selection-end-line="883" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mobile-hud.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile-hud.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="887" column="19" selection-start-line="887" selection-start-column="19" selection-end-line="899" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="street.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/street.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="23443">
+              <caret line="1379" column="31" selection-start-line="1379" selection-start-column="31" selection-end-line="1379" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -88,16 +60,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
               <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index-hud.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index-hud.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15164">
-              <caret line="892" column="45" selection-start-line="892" selection-start-column="45" selection-end-line="892" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -354,7 +316,7 @@
       <workItem from="1480092495406" duration="1371000" />
       <workItem from="1480327589850" duration="6826000" />
       <workItem from="1480342381360" duration="3787000" />
-      <workItem from="1480426870204" duration="43719000" />
+      <workItem from="1480426870204" duration="47065000" />
     </task>
     <task id="LOCAL-00001" summary="Vive teleport and cursor contrrols working'">
       <created>1478782814488</created>
@@ -552,25 +514,32 @@
       <option name="project" value="LOCAL" />
       <updated>1480603548425</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="All banners working and not flakey anymore">
+      <created>1480604995072</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1480604995072</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="323411000" />
+    <option name="totallyTimeSpent" value="326757000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="16" y="6" width="2842" height="1609" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11310592" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3170467" sideWeight="0.5023419" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32883522" sideWeight="0.49765807" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30610797" sideWeight="0.49765807" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1640625" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1640625" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -612,7 +581,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Video working with webm" />
     <MESSAGE value="Added Sound to phone" />
     <MESSAGE value="Body and stuff in" />
     <MESSAGE value="Lots of Lights" />
@@ -637,7 +605,8 @@
     <MESSAGE value="Moved Mobile HUD" />
     <MESSAGE value="New info banner system working for mobile" />
     <MESSAGE value="All banners working but it is flakey" />
-    <option name="LAST_COMMIT_MESSAGE" value="All banners working but it is flakey" />
+    <MESSAGE value="All banners working and not flakey anymore" />
+    <option name="LAST_COMMIT_MESSAGE" value="All banners working and not flakey anymore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -989,8 +958,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15011">
-          <caret line="883" column="32" selection-start-line="883" selection-start-column="32" selection-end-line="883" selection-end-column="32" />
+        <state relative-caret-position="23443">
+          <caret line="1379" column="31" selection-start-line="1379" selection-start-column="31" selection-end-line="1379" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1019,18 +988,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
+    <entry file="file://$PROJECT_DIR$/index-fixed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="738" column="43" selection-start-line="738" selection-start-column="27" selection-end-line="738" selection-end-column="43" />
+        <state relative-caret-position="816">
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index-fixed.html">
+    <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2108">
-          <caret line="187" column="76" selection-start-line="187" selection-start-column="76" selection-end-line="187" selection-end-column="76" />
+        <state relative-caret-position="193">
+          <caret line="706" column="87" selection-start-line="706" selection-start-column="87" selection-end-line="706" selection-end-column="87" />
           <folding />
         </state>
       </provider>
