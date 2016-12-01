@@ -106,8 +106,8 @@
 				var $videoBanner = document.getElementById("VideoBanner");
 
 				this.el.addEventListener('click', function () {
-					$imageBanner.setAttribute('visible', 'false');
-					$videoBanner.setAttribute('visible', 'false');
+					$imageBanner.setAttribute('scale', '0 0 0');
+					$videoBanner.setAttribute('scale', '0 0 0');
 				});
 			}
 		});
@@ -185,42 +185,42 @@
 
 					switch(data.evidenceType) {
 						case 'Cigarette':
-							$cigaretteBanner.setAttribute('visible', 'true');
+							$cigaretteBanner.setAttribute('scale', '1 1 1');
 							$cigaretteClose.setAttribute('visible', 'true');
 							$cigaretteInfo.setAttribute('visible', 'false');
 							break;
 						case 'Footprint':
-							$footPrintBanner.setAttribute('visible', 'true');
+							$footPrintBanner.setAttribute('scale', '1 1 1');
 							$footPrintClose.setAttribute('visible', 'true');
 							$footPrintInfo.setAttribute('visible', 'false');
 							break;
 						case 'Glass Fragments':
-							$glassFragmentsBanner.setAttribute('visible', 'true');
+							$glassFragmentsBanner.setAttribute('scale', '1 1 1');
 							$glassFragmentsClose.setAttribute('visible', 'true');
 							$glassFragmentsInfo.setAttribute('visible', 'false');
 							break;
 						case 'Door Handle':
-							$doorHandleBanner.setAttribute('visible', 'true');
+							$doorHandleBanner.setAttribute('scale', '1 1 1');
 							$doorHandleClose.setAttribute('visible', 'true');
 							$doorHandleInfo.setAttribute('visible', 'false');
 							break;
 						case 'Finger Print':
-							$fingerPrintBanner.setAttribute('visible', 'true');
+							$fingerPrintBanner.setAttribute('scale', '1 1 1');
 							$fingerPrintClose.setAttribute('visible', 'true');
 							$fingerPrintInfo.setAttribute('visible', 'false');
 							break;
 						case 'Carpet Mark':
-							$carpetBanner.setAttribute('visible', 'true');
+							$carpetBanner.setAttribute('scale', '1 1 1');
 							$carpetClose.setAttribute('visible', 'true');
 							$carpetInfo.setAttribute('visible', 'false');
 							break;
 						case 'iMac':
-							$iMacBanner.setAttribute('visible', 'true');
+							$iMacBanner.setAttribute('scale', '1 1 1');
 							$iMacClose.setAttribute('visible', 'true');
 							$iMacInfo.setAttribute('visible', 'false');
 							break;
 						case 'Fridge':
-							$fridgeBanner.setAttribute('visible', 'true');
+							$fridgeBanner.setAttribute('scale', '1 1 1');
 							$fridgeClose.setAttribute('visible', 'true');
 							$fridgeInfo.setAttribute('visible', 'false');
 							break;
@@ -237,32 +237,32 @@
 
 							$callSourceFile.play();
 
-							$mobileBanner.setAttribute('visible', 'true');
+							$mobileBanner.setAttribute('scale', '1 1 1');
 							$mobileClose.setAttribute('visible', 'true');
 							$mobileInfo.setAttribute('visible', 'false');
 							break;
 						case 'BackDoor':
-							$backDoorBanner.setAttribute('visible', 'true');
+							$backDoorBanner.setAttribute('scale', '1 1 1');
 							$backDoorClose.setAttribute('visible', 'true');
 							$backDoorInfo.setAttribute('visible', 'false');
 							break;
 						case 'Body':
-							$bodyBanner.setAttribute('visible', 'true');
+							$bodyBanner.setAttribute('scale', '1 1 1');
 							$bodyClose.setAttribute('visible', 'true');
 							$bodyInfo.setAttribute('visible', 'false');
 							break;
 						case 'Hammer':
-							$hammerBanner.setAttribute('visible', 'true');
+							$hammerBanner.setAttribute('scale', '1 1 1');
 							$hammerClose.setAttribute('visible', 'true');
 							$hammerInfo.setAttribute('visible', 'false');
 							break;
 						case 'Keys':
-							$keysBanner.setAttribute('visible', 'true');
+							$keysBanner.setAttribute('scale', '1 1 1');
 							$keysClose.setAttribute('visible', 'true');
 							$keysInfo.setAttribute('visible', 'false');
 							break;
 						case 'CCTV':
-							$CCTVBanner.setAttribute('visible', 'true');
+							$CCTVBanner.setAttribute('scale', '1 1 1');
 							$CCTVClose.setAttribute('visible', 'true');
 							$CCTVInfo.setAttribute('visible', 'false');
 							break;
@@ -314,7 +314,7 @@
 							$carpetBannerActive.setAttribute('position', '0 0 0.01');
 							break;
 						case 'iMac':
-							$iMacBannerActive.ssetAttribute('position', '0 0 0.01');
+							$iMacBannerActive.setAttribute('position', '0 0 0.01');
 							break;
 						case 'Fridge':
 							$fridgeBannerActive.setAttribute('position', '0 0 0.01');
@@ -374,7 +374,7 @@
 				var $callSourceFile = document.getElementById('PhoneCallSourceFile');
 				var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
 
-				this.el.addEventListener('mouseleave', function (event) {
+				this.el.addEventListener('mouseleave', function () {
 
 					switch (data.evidenceType) {
 						case 'Cigarette':
@@ -422,48 +422,48 @@
 					}
 				});
 
-				this.el.addEventListener('click', function (event) {
+				this.el.addEventListener('click', function () {
 
 					switch(data.evidenceType) {
 						case 'Cigarette':
 							$cigaretteBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideOneImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'Footprint':
 							$footPrintBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideThreeImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'Glass Fragments':
 							$glassFragmentsBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideFourImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'Door Handle':
 							$doorHandleBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideFiveImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'Finger Print':
 							$fingerPrintBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideSixImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'Carpet Mark':
 							$carpetBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideSevenImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'iMac':
 							$iMacBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideEightImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'Fridge':
 							$fridgeBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideNineImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'Mobile':
 
@@ -480,27 +480,27 @@
 
 							$mobileBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideTenImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'BackDoor':
 							$backDoorBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideElevenImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'Body':
 							$bodyBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideTwelveImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'Hammer':
 							$hammerBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideEighteenImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'Keys':
 							$keysBannerActive.setAttribute('position', '0 0 -0.01');
 							$imageBanner.setAttribute('src', '#SlideNineteenImage');
-							$imageBanner.setAttribute('visible', 'true');
+							$imageBanner.setAttribute('scale', '1 1 1');
 							break;
 						case 'CCTV':
 
@@ -515,7 +515,7 @@
 							$CCTVVideoSourceFile.play();
 
 							$CCTVBannerActive.setAttribute('position', '0 0 -0.01');
-							$videoBanner.setAttribute('visible', 'true');
+							$videoBanner.setAttribute('scale', '1 1 1');
 							break;
 					}
 				});
@@ -591,74 +591,74 @@
 
 					switch(data.evidenceType) {
 						case 'Cigarette':
-							$cigaretteBanner.setAttribute('visible', 'false');
+							$cigaretteBanner.setAttribute('scale', '0 0 0');
 							$cigaretteClose.setAttribute('visible', 'false');
 							$cigaretteInfo.setAttribute('visible', 'true');
 							break;
 						case 'Footprint':
-							$footPrintBanner.setAttribute('visible', 'false');
+							$footPrintBanner.setAttribute('scale', '0 0 0');
 							$footPrintClose.setAttribute('visible', 'false');
 							$footPrintInfo.setAttribute('visible', 'true');
 							break;
 						case 'Glass Fragments':
-							$glassFragmentsBanner.setAttribute('visible', 'false');
+							$glassFragmentsBanner.setAttribute('scale', '0 0 0');
 							$glassFragmentsClose.setAttribute('visible', 'false');
 							$glassFragmentsInfo.setAttribute('visible', 'true');
 							break;
 						case 'Door Handle':
-							$doorHandleBanner.setAttribute('visible', 'false');
+							$doorHandleBanner.setAttribute('scale', '0 0 0');
 							$doorHandleClose.setAttribute('visible', 'false');
 							$doorHandleInfo.setAttribute('visible', 'true');
 							break;
 						case 'Finger Print':
-							$fingerPrintBanner.setAttribute('visible', 'false');
+							$fingerPrintBanner.setAttribute('scale', '0 0 0');
 							$fingerPrintClose.setAttribute('visible', 'false');
 							$fingerPrintInfo.setAttribute('visible', 'true');
 							break;
 						case 'Carpet Mark':
-							$carpetBanner.setAttribute('visible', 'false');
+							$carpetBanner.setAttribute('scale', '0 0 0');
 							$carpetClose.setAttribute('visible', 'false');
 							$carpetInfo.setAttribute('visible', 'true');
 							break;
 						case 'iMac':
-							$iMacBanner.setAttribute('visible', 'false');
+							$iMacBanner.setAttribute('scale', '0 0 0');
 							$iMacClose.setAttribute('visible', 'false');
 							$iMacInfo.setAttribute('visible', 'true');
 							break;
 						case 'Fridge':
-							$fridgeBanner.setAttribute('visible', 'false');
+							$fridgeBanner.setAttribute('scale', '0 0 0');
 							$fridgeClose.setAttribute('visible', 'false');
 							$fridgeInfo.setAttribute('visible', 'true');
 							break;
 						case 'Mobile':
-							$mobileBanner.setAttribute('visible', 'false');
+							$mobileBanner.setAttribute('scale', '0 0 0');
 							$mobileClose.setAttribute('visible', 'false');
 							$mobileInfo.setAttribute('visible', 'true');
 							$callSourceFile.pause();
 							$callSourceFile.currentTime = 0;
 							break;
 						case 'BackDoor':
-							$backDoorBanner.setAttribute('visible', 'false');
+							$backDoorBanner.setAttribute('scale', '0 0 0');
 							$backDoorClose.setAttribute('visible', 'false');
 							$backDoorInfo.setAttribute('visible', 'true');
 							break;
 						case 'Body':
-							$bodyBanner.setAttribute('visible', 'false');
+							$bodyBanner.setAttribute('scale', '0 0 0');
 							$bodyClose.setAttribute('visible', 'false');
 							$bodyInfo.setAttribute('visible', 'true');
 							break;
 						case 'Hammer':
-							$hammerBanner.setAttribute('visible', 'false');
+							$hammerBanner.setAttribute('scale', '0 0 0');
 							$hammerClose.setAttribute('visible', 'false');
 							$hammerInfo.setAttribute('visible', 'true');
 							break;
 						case 'Keys':
-							$keysBanner.setAttribute('visible', 'false');
+							$keysBanner.setAttribute('scale', '0 0 0');
 							$keysClose.setAttribute('visible', 'false');
 							$keysInfo.setAttribute('visible', 'true');
 							break;
 						case 'CCTV':
-							$CCTVBanner.setAttribute('visible', 'false');
+							$CCTVBanner.setAttribute('scale', '0 0 0');
 							$CCTVClose.setAttribute('visible', 'false');
 							$CCTVInfo.setAttribute('visible', 'true');
 							$CCTVVideoSourceFile.pause();
@@ -1154,7 +1154,7 @@
 		<a-entity id="CigaretteBanner"
 				  class="clickable look-at"
 				  position="12.28 1.7 -2.60"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: Cigarette">
 			<a-image src="#BannerOneImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="CigaretteBannerActive"
@@ -1168,7 +1168,7 @@
 		<a-entity id="FootPrintBanner"
 				  class="clickable look-at"
 				  position="10.2 1.7 -3.8"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: Footprint;">
 			<a-image src="#BannerThreeImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="FootPrintBannerActive"
@@ -1182,7 +1182,7 @@
 		<a-entity id="GlassFragmentsBanner"
 				  class="clickable look-at"
 				  position="10.47 1.7 -4.2"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: Glass Fragments;">
 			<a-image src="#BannerFourImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="GlassFragmentsBannerActive"
@@ -1196,7 +1196,7 @@
 		<a-entity id="DoorHandleBanner"
 				  class="clickable look-at"
 				  position="11.15 1.7 -6.3"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: Door Handle;">
 			<a-image src="#BannerFiveImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="DoorHandleBannerActive"
@@ -1210,7 +1210,7 @@
 		<a-entity id="FingerPrintBanner"
 				  class="clickable look-at"
 				  position="13.1 1.75 -5.55"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: Finger Print;">
 			<a-image src="#BannerSixImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="FingerPrintBannerActive"
@@ -1224,7 +1224,7 @@
 		<a-entity id="CarpetBanner"
 				  class="clickable look-at"
 				  position="12.3 1.7 -6.6"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: Carpet Mark;">
 			<a-image src="#BannerSevenImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="CarpetBannerActive"
@@ -1238,7 +1238,7 @@
 		<a-entity id="IMacBanner"
 				  class="clickable look-at"
 				  position="11.7 1.7 -10.4"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: iMac;">
 			<a-image src="#BannerEightImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="IMacBannerActive"
@@ -1252,7 +1252,7 @@
 		<a-entity id="FridgeBanner"
 				  class="clickable look-at"
 				  position="11.1 1.7 -12.2"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: Fridge;">
 			<a-image src="#BannerNineImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="FridgeBannerActive"
@@ -1266,7 +1266,7 @@
 		<a-entity id="MobileBanner"
 				  class="clickable look-at"
 				  position="10.5 1.7 -11.0"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: Mobile;">
 			<a-image src="#BannerTenImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="MobileBannerActive"
@@ -1280,7 +1280,7 @@
 		<a-entity id="BackDoorBanner"
 				  class="clickable look-at"
 				  position="12.3 1.7 -13.4"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: BackDoor;">
 			<a-image src="#BannerElevenImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="BackDoorBannerActive"
@@ -1294,7 +1294,7 @@
 		<a-entity id="BodyBanner"
 				  class="clickable look-at"
 				  position="11.0 1.7 -11.3"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: Body;">
 			<a-image src="#BannerTwelveImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="BodyBannerActive"
@@ -1308,7 +1308,7 @@
 		<a-entity id="HammerBanner"
 				  class="clickable look-at"
 				  position="11.08 1.7 -13.9"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: Hammer;">
 			<a-image src="#BannerEighteenImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="HammerBannerActive"
@@ -1322,7 +1322,7 @@
 		<a-entity id="KeysBanner"
 				  class="clickable look-at"
 				  position="10.98 1.7 -12.9"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: Keys;">
 			<a-image src="#BannerNineteenImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="KeysBannerActive"
@@ -1336,7 +1336,7 @@
 		<a-entity id="CCTVBanner"
 				  class="clickable look-at"
 				  position="-3.5 1.7 -22.1"
-				  visible="false"
+				  scale="0 0 0"
 				  info-panel-listener="evidenceType: CCTV;">
 			<a-image src="#BannerTwentyImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
 			<a-entity id="CCTVBannerActive"
@@ -1508,7 +1508,7 @@
 				 class="clickable"
 				 geometry="primitive: plane; height: 0.75; width: 1.0"
 				 position="0 0 -1.0"
-				 visible="false"
+				 scale="0 0 0"
 				 hud-close></a-image>
 
 		<a-video id="VideoBanner"
@@ -1516,7 +1516,7 @@
 				 height="0.6675"
 				 width="1.2"
 				 position="0 0 -1.0"
-				 visible="false"
+				 scale="0 0 0"
 				 hud-close>
 		</a-video>
 
