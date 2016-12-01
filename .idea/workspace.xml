@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="79cdede7-07f6-48da-a2e3-775d8e19bddf" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/index-hud.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-hud.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/index-fixed.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/img/default-slide.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="aframe-boilerplate.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mobile-fixed.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mobile-fixed.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="706" column="87" selection-start-line="706" selection-start-column="87" selection-end-line="706" selection-end-column="87" />
+            <state relative-caret-position="-3532">
+              <caret line="301" column="86" selection-start-line="301" selection-start-column="86" selection-end-line="301" selection-end-column="86" />
               <folding />
             </state>
           </provider>
@@ -45,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23443">
-              <caret line="1379" column="31" selection-start-line="1379" selection-start-column="31" selection-end-line="1379" selection-end-column="31" />
+            <state relative-caret-position="205">
+              <caret line="694" column="75" selection-start-line="694" selection-start-column="75" selection-end-line="694" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -78,12 +77,12 @@
         <option value="$PROJECT_DIR$/street.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/vive.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/mobile-hud.html" />
         <option value="$PROJECT_DIR$/index-hud.html" />
         <option value="$PROJECT_DIR$/lib/aframe.min.js" />
-        <option value="$PROJECT_DIR$/mobile-fixed.html" />
         <option value="$PROJECT_DIR$/index-fixed.html" />
+        <option value="$PROJECT_DIR$/mobile-fixed.html" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -316,7 +315,8 @@
       <workItem from="1480092495406" duration="1371000" />
       <workItem from="1480327589850" duration="6826000" />
       <workItem from="1480342381360" duration="3787000" />
-      <workItem from="1480426870204" duration="47065000" />
+      <workItem from="1480426870204" duration="49153000" />
+      <workItem from="1480615463332" duration="537000" />
     </task>
     <task id="LOCAL-00001" summary="Vive teleport and cursor contrrols working'">
       <created>1478782814488</created>
@@ -521,25 +521,38 @@
       <option name="project" value="LOCAL" />
       <updated>1480604995072</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Version ready for January demo">
+      <created>1480609774591</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1480609774591</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fixed where Mobile call kicks in">
+      <created>1480615165685</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1480615165685</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="326757000" />
+    <option name="totallyTimeSpent" value="329382000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="16" y="6" width="2842" height="1609" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11310592" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3170467" sideWeight="0.5023419" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30610797" sideWeight="0.49765807" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1640625" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1640625" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -548,6 +561,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -581,8 +595,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Sound to phone" />
-    <MESSAGE value="Body and stuff in" />
     <MESSAGE value="Lots of Lights" />
     <MESSAGE value="Added new info icon" />
     <MESSAGE value="Got 4 slides in" />
@@ -606,7 +618,9 @@
     <MESSAGE value="New info banner system working for mobile" />
     <MESSAGE value="All banners working but it is flakey" />
     <MESSAGE value="All banners working and not flakey anymore" />
-    <option name="LAST_COMMIT_MESSAGE" value="All banners working and not flakey anymore" />
+    <MESSAGE value="Version ready for January demo" />
+    <MESSAGE value="Fixed where Mobile call kicks in" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed where Mobile call kicks in" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -631,7 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="35" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -662,7 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="35" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -693,7 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="35" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -724,7 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="35" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -748,7 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -772,7 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -944,7 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -956,22 +963,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23443">
-          <caret line="1379" column="31" selection-start-line="1379" selection-start-column="31" selection-end-line="1379" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index-hud.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15164">
-          <caret line="892" column="45" selection-start-line="892" selection-start-column="45" selection-end-line="892" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/index-hud.html" />
     <entry file="file://$PROJECT_DIR$/lib/aframe.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1117308">
@@ -980,26 +972,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-hud.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="887" column="19" selection-start-line="887" selection-start-column="19" selection-end-line="899" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index-fixed.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-hud.html" />
+    <entry file="file://$PROJECT_DIR$/index-fixed.html" />
     <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="706" column="87" selection-start-line="706" selection-start-column="87" selection-end-line="706" selection-end-column="87" />
+        <state relative-caret-position="-3532">
+          <caret line="301" column="86" selection-start-line="301" selection-start-column="86" selection-end-line="301" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="694" column="75" selection-start-line="694" selection-start-column="75" selection-end-line="694" selection-end-column="75" />
           <folding />
         </state>
       </provider>
