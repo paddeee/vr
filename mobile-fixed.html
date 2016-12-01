@@ -175,18 +175,6 @@
                             $fridgeInfo.setAttribute('visible', 'false');
                             break;
                         case 'Mobile':
-
-                            // Stop dial tone once call has been listened to
-                            $dialToneElement.pause();
-
-                            // Reset Call Audio if already playing
-                            if ($callSourceFile.paused === 'false') {
-                                $callSourceFile.currentTime = 0;
-                                $callSourceFile.pause();
-                            }
-
-                            $callSourceFile.play();
-
                             $mobileBanner.setAttribute('visible', 'true');
                             $mobileClose.setAttribute('visible', 'true');
                             $mobileInfo.setAttribute('visible', 'false');
