@@ -20,20 +20,16 @@
 	</style>
 
 	<!-- Networked
-	<script src="https://www.gstatic.com/firebasejs/3.6.3/firebase.js"></script>
     <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe.min.js"></script>
     <script src="https://rawgit.com/ngokevin/kframe/master/dist/kframe.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-vive-cursor-component/master/dist/aframe-vive-cursor-component.min.js"></script>
-    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-component.min.js"></script>
-     <script src="https://rawgit.com/ngokevin/aframe-firebase-component/master/dist/aframe-firebase-component.min.js"></script>-->
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-component.min.js"></script>-->
 
 	<!-- Offline -->
-	<script src="https://www.gstatic.com/firebasejs/3.6.3/firebase.js"></script>
 	<script src="lib//aframe.min.js"></script>
 	<script src="lib/kframe.min.js"></script>
 	<script src="lib/aframe-vive-cursor-component.min.js"></script>
 	<script src="lib/aframe-teleport-controls.min.js"></script>
-	<script src="https://rawgit.com/ngokevin/aframe-firebase-component/master/dist/aframe-firebase-component.min.js"></script>
 
 	<script>
 
@@ -56,7 +52,6 @@
 
 				// Move BannerS into Camera Entity
 				$camera = document.querySelector('[camera]');
-				$camera.setAttribute('firebase-component', 'components: position, rotation');
 
 				$camera.appendChild($imageBanner);
 				$camera.appendChild($videoBanner);
@@ -673,10 +668,7 @@
 
 <img id="LoadingMask" class="mask-image" src="assets/img/mask.png" >
 
-<a-scene firebase=" apiKey: AIzaSyC42QoeGEWpMh9-sA5LDGurksimQq3HNvg;
-					authDomain: crimevr.firebaseapp.com;
-					databaseURL: https://crimevr.firebaseio.com;
-					storageBucket: crimevr.appspot.com">
+<a-scene>
 	<a-assets>
 
 		<!-- Audio -->
@@ -1525,10 +1517,10 @@
 
 	</a-entity>
 
-	<!-- Controller -->
+	<!-- Teleporter -->
 	<a-entity id="LeftHand" teleport-controls="collisionEntity: #FloorGeometry; button: trigger; maxLength: 25" vive-controls="hand: left"></a-entity>
 
-	<!-- Teleporter -->
+	<!-- Controller -->
 	<a-entity id="RightHand" custom-vive-controls vive-cursor="objects: .clickable" vive-controls="hand: right"></a-entity>
 </a-scene>
 </body>

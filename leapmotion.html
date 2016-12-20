@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Turf Lane - Crime Scene</title>
+    <meta name="description" content="Hello, World! - A-Frame">
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        .mask-image {
+            height: 100%;
+            width: 100%;
+        }
+
+        .rs-counter-value {
+            color: #FFF !important;
+        }
+    </style>
+
+    <!-- Networked
+    <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/kframe/master/dist/kframe.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-vive-cursor-component/master/dist/aframe-vive-cursor-component.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-component.min.js"></script>-->
+
+    <!-- Offline -->
+    <script src="lib//aframe.min.js"></script>
+    <script src="lib/kframe.min.js"></script>
+    <script src="lib/aframe-vive-cursor-component.min.js"></script>
+    <script src="lib/aframe-teleport-controls.min.js"></script>
+    <script src="lib/aframe-leap-hands.min.js"></script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            var $turfLaneModel = document.getElementById('TurfLane');
+            var $scene = document.querySelector('a-scene');
+            var $loadingMask = document.getElementById('LoadingMask');
+            var $goIcon = document.getElementById('GoIcon');
+            var $camera;
+            var $rightHand = document.getElementById('RightHand');
+            var $imageBanner = document.getElementById("ImageBanner");
+            var $videoBanner = document.getElementById("VideoBanner");
+            var $lookAtItems= document.querySelectorAll('.look-at');
+
+            $turfLaneModel.addEventListener('model-loaded', function () {
+
+                $lookAtItems.forEach(function($lookAtItem) {
+                    $lookAtItem.setAttribute('look-at', '[camera]');
+                });
+
+                // Move BannerS into Camera Entity
+                $camera = document.querySelector('[camera]');
+                $camera.setAttribute('near', '0.01');
+                $camera.setAttribute('look-controls-enabled', 'true');
+
+                $camera.appendChild($imageBanner);
+                $camera.appendChild($videoBanner);
+                $camera.appendChild($rightHand);
+
+                // Point at house to get frameset slowing warnings out of the way
+                $camera.setAttribute('rotation', '0 -45 0');
+
+                setTimeout(function() {
+                    $camera.setAttribute('rotation', '0 0 0');
+                    $loadingMask.setAttribute('hidden', 'true');
+                }, 2000);
+            });
+
+            $scene.addEventListener('enter-vr', function () {
+                $goIcon.setAttribute('visible', 'true');
+            });
+        });
+
+        // Handle the Enter VR Button
+        AFRAME.registerComponent('go-listener', {
+
+            init: function () {
+
+                var $lighting = document.getElementById('Lighting');
+                var $icons = document.getElementById('Icons');
+                var $loadingScene = document.getElementById('LoadingScene');
+                var $dialToneElement = document.getElementById('DialToneElement');
+
+                this.el.addEventListener('mouseenter', function (event) {
+                    event.target.setAttribute('opacity', '1');
+                });
+
+                this.el.addEventListener('mouseleave', function (event) {
+                    event.target.setAttribute('opacity', '0.4');
+                });
+
+                this.el.addEventListener('click', function () {
+
+                    $loadingScene.setAttribute('visible', 'false');
+                    $icons.setAttribute('visible', 'true');
+                    $lighting.setAttribute('visible', 'true');
+
+                    if ($dialToneElement.paused === 'false') {
+                        return;
+                    }
+
+                    $dialToneElement.components.sound.playSound();
+                });
+            }
+        });
+
+        AFRAME.registerComponent('hud-close', {
+
+            init: function () {
+
+                var $imageBanner = document.getElementById("ImageBanner");
+                var $videoBanner = document.getElementById("VideoBanner");
+
+                this.el.addEventListener('click', function () {
+                    $imageBanner.setAttribute('src', '#DefaultSlide');
+                    $imageBanner.setAttribute('scale', '0 0 0');
+                    $videoBanner.setAttribute('scale', '0 0 0');
+                });
+            }
+        });
+
+        AFRAME.registerComponent('cursor-listener', {
+
+            schema: {
+                evidenceType: { type: 'string' }
+            },
+
+            init: function () {
+
+                var data = this.data;
+
+                var $infoIcons = document.querySelectorAll('.info-icon');
+                var $cigaretteInfo = document.getElementById('CigaretteInfoIcon');
+                var $cigaretteClose = document.getElementById('CigaretteInfoClose');
+                var $footPrintInfo = document.getElementById('FootPrintInfoIcon');
+                var $footPrintClose = document.getElementById('FootPrintInfoClose');
+                var $glassFragmentsInfo = document.getElementById('GlassFragmentsIcon');
+                var $glassFragmentsClose = document.getElementById('GlassFragmentsInfoClose');
+                var $doorHandleInfo = document.getElementById('DoorHandleIcon');
+                var $doorHandleClose = document.getElementById('DoorHandleInfoClose');
+                var $fingerPrintInfo = document.getElementById('FingerPrintIcon');
+                var $fingerPrintClose = document.getElementById('FingerPrintInfoClose');
+                var $carpetInfo = document.getElementById('CarpetIcon');
+                var $carpetClose = document.getElementById('CarpetInfoClose');
+                var $iMacInfo = document.getElementById('IMacIcon');
+                var $iMacClose = document.getElementById('IMacInfoClose');
+                var $fridgeInfo = document.getElementById('FridgeIcon');
+                var $fridgeClose = document.getElementById('FridgeInfoClose');
+                var $mobileInfo = document.getElementById('MobileIcon');
+                var $mobileClose = document.getElementById('MobileInfoClose');
+                var $backDoorInfo = document.getElementById('BackDoorIcon');
+                var $backDoorClose = document.getElementById('BackDoorInfoClose');
+                var $bodyInfo = document.getElementById('BodyIcon');
+                var $bodyClose = document.getElementById('BodyInfoClose');
+                var $hammerInfo = document.getElementById('HammerIcon');
+                var $hammerClose = document.getElementById('HammerInfoClose');
+                var $keysInfo = document.getElementById('KeysIcon');
+                var $keysClose = document.getElementById('KeysInfoClose');
+                var $CCTVInfo = document.getElementById('CCTVIcon');
+                var $CCTVClose = document.getElementById('CCTVInfoClose');
+
+                var $cigaretteBanner = document.getElementById('CigaretteBanner');
+                var $footPrintBanner = document.getElementById('FootPrintBanner');
+                var $glassFragmentsBanner = document.getElementById('GlassFragmentsBanner');
+                var $doorHandleBanner = document.getElementById('DoorHandleBanner');
+                var $fingerPrintBanner = document.getElementById('FingerPrintBanner');
+                var $carpetBanner = document.getElementById('CarpetBanner');
+                var $iMacBanner = document.getElementById('IMacBanner');
+                var $fridgeBanner = document.getElementById('FridgeBanner');
+                var $mobileBanner = document.getElementById('MobileBanner');
+                var $backDoorBanner = document.getElementById('BackDoorBanner');
+                var $bodyBanner = document.getElementById('BodyBanner');
+                var $hammerBanner = document.getElementById('HammerBanner');
+                var $keysBanner = document.getElementById('KeysBanner');
+                var $CCTVBanner = document.getElementById('CCTVBanner');
+
+                var $dialToneElement = document.getElementById('DialToneElement');
+                var $callSourceFile = document.getElementById('PhoneCallSourceFile');
+
+                this.el.addEventListener('mouseenter', function (event) {
+                    event.target.setAttribute('opacity', '1');
+                });
+
+                this.el.addEventListener('mouseleave', function () {
+
+                    $infoIcons.forEach(function($infoIcon) {
+                        $infoIcon.setAttribute('opacity', '0.5');
+                    });
+                });
+
+                this.el.addEventListener('click', function () {
+
+                    switch(data.evidenceType) {
+                        case 'Cigarette':
+                            $cigaretteBanner.setAttribute('scale', '1 1 1');
+                            $cigaretteClose.setAttribute('visible', 'true');
+                            $cigaretteInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'Footprint':
+                            $footPrintBanner.setAttribute('scale', '1 1 1');
+                            $footPrintClose.setAttribute('visible', 'true');
+                            $footPrintInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'Glass Fragments':
+                            $glassFragmentsBanner.setAttribute('scale', '1 1 1');
+                            $glassFragmentsClose.setAttribute('visible', 'true');
+                            $glassFragmentsInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'Door Handle':
+                            $doorHandleBanner.setAttribute('scale', '1 1 1');
+                            $doorHandleClose.setAttribute('visible', 'true');
+                            $doorHandleInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'Finger Print':
+                            $fingerPrintBanner.setAttribute('scale', '1 1 1');
+                            $fingerPrintClose.setAttribute('visible', 'true');
+                            $fingerPrintInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'Carpet Mark':
+                            $carpetBanner.setAttribute('scale', '1 1 1');
+                            $carpetClose.setAttribute('visible', 'true');
+                            $carpetInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'iMac':
+                            $iMacBanner.setAttribute('scale', '1 1 1');
+                            $iMacClose.setAttribute('visible', 'true');
+                            $iMacInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'Fridge':
+                            $fridgeBanner.setAttribute('scale', '1 1 1');
+                            $fridgeClose.setAttribute('visible', 'true');
+                            $fridgeInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'Mobile':
+                            $mobileBanner.setAttribute('scale', '1 1 1');
+                            $mobileClose.setAttribute('visible', 'true');
+                            $mobileInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'BackDoor':
+                            $backDoorBanner.setAttribute('scale', '1 1 1');
+                            $backDoorClose.setAttribute('visible', 'true');
+                            $backDoorInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'Body':
+                            $bodyBanner.setAttribute('scale', '1 1 1');
+                            $bodyClose.setAttribute('visible', 'true');
+                            $bodyInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'Hammer':
+                            $hammerBanner.setAttribute('scale', '1 1 1');
+                            $hammerClose.setAttribute('visible', 'true');
+                            $hammerInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'Keys':
+                            $keysBanner.setAttribute('scale', '1 1 1');
+                            $keysClose.setAttribute('visible', 'true');
+                            $keysInfo.setAttribute('visible', 'false');
+                            break;
+                        case 'CCTV':
+                            $CCTVBanner.setAttribute('scale', '1 1 1');
+                            $CCTVClose.setAttribute('visible', 'true');
+                            $CCTVInfo.setAttribute('visible', 'false');
+                            break;
+                    }
+                });
+            }
+        });
+
+        AFRAME.registerComponent('info-panel-listener', {
+
+            init: function () {
+
+                var data = this.data;
+
+                var $cigaretteBannerActive = document.getElementById('CigaretteBannerActive');
+                var $footPrintBannerActive = document.getElementById('FootPrintBannerActive');
+                var $glassFragmentsBannerActive = document.getElementById('GlassFragmentsBannerActive');
+                var $doorHandleBannerActive = document.getElementById('DoorHandleBannerActive');
+                var $fingerPrintBannerActive = document.getElementById('FingerPrintBannerActive');
+                var $carpetBannerActive = document.getElementById('CarpetBannerActive');
+                var $iMacBannerActive = document.getElementById('IMacBannerActive');
+                var $fridgeBannerActive = document.getElementById('FridgeBannerActive');
+                var $mobileBannerActive = document.getElementById('MobileBannerActive');
+                var $backDoorBannerActive = document.getElementById('BackDoorBannerActive');
+                var $bodyBannerActive = document.getElementById('BodyBannerActive');
+                var $hammerBannerActive = document.getElementById('HammerBannerActive');
+                var $keysBannerActive = document.getElementById('KeysBannerActive');
+                var $CCTVBannerActive = document.getElementById('CCTVBannerActive');
+
+                this.el.addEventListener('mouseenter', function () {
+
+                    switch(data.evidenceType) {
+                        case 'Cigarette':
+                            $cigaretteBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'Footprint':
+                            $footPrintBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'Glass Fragments':
+                            $glassFragmentsBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'Door Handle':
+                            $doorHandleBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'Finger Print':
+                            $fingerPrintBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'Carpet Mark':
+                            $carpetBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'iMac':
+                            $iMacBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'Fridge':
+                            $fridgeBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'Mobile':
+                            $mobileBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'BackDoor':
+                            $backDoorBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'Body':
+                            $bodyBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'Hammer':
+                            $hammerBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'Keys':
+                            $keysBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                        case 'CCTV':
+                            $CCTVBannerActive.setAttribute('position', '0 0 0.01');
+                            break;
+                    }
+                });
+            }
+        });
+
+        AFRAME.registerComponent('info-panel-active-listener', {
+
+            schema: {
+                evidenceType: { type: 'string' }
+            },
+
+            init: function () {
+
+                var data = this.data;
+
+                var $imageBanner = document.getElementById("ImageBanner");
+                var $videoBanner = document.getElementById("VideoBanner");
+
+                var $cigaretteBannerActive = document.getElementById('CigaretteBannerActive');
+                var $footPrintBannerActive = document.getElementById('FootPrintBannerActive');
+                var $glassFragmentsBannerActive = document.getElementById('GlassFragmentsBannerActive');
+                var $doorHandleBannerActive = document.getElementById('DoorHandleBannerActive');
+                var $fingerPrintBannerActive = document.getElementById('FingerPrintBannerActive');
+                var $carpetBannerActive = document.getElementById('CarpetBannerActive');
+                var $iMacBannerActive = document.getElementById('IMacBannerActive');
+                var $fridgeBannerActive = document.getElementById('FridgeBannerActive');
+                var $mobileBannerActive = document.getElementById('MobileBannerActive');
+                var $backDoorBannerActive = document.getElementById('BackDoorBannerActive');
+                var $bodyBannerActive = document.getElementById('BodyBannerActive');
+                var $hammerBannerActive = document.getElementById('HammerBannerActive');
+                var $keysBannerActive = document.getElementById('KeysBannerActive');
+                var $CCTVBannerActive = document.getElementById('CCTVBannerActive');
+
+                var $dialToneElement = document.getElementById('DialToneElement');
+                var $callSourceFile = document.getElementById('PhoneCallSourceFile');
+                var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
+
+                this.el.addEventListener('mouseleave', function () {
+
+                    switch (data.evidenceType) {
+                        case 'Cigarette':
+                            $cigaretteBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'Footprint':
+                            $footPrintBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'Glass Fragments':
+                            $glassFragmentsBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'Door Handle':
+                            $doorHandleBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'Finger Print':
+                            $fingerPrintBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'Carpet Mark':
+                            $carpetBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'iMac':
+                            $iMacBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'Fridge':
+                            $fridgeBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'Mobile':
+                            $mobileBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'BackDoor':
+                            $backDoorBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'Body':
+                            $bodyBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'Hammer':
+                            $hammerBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'Keys':
+                            $keysBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                        case 'CCTV':
+                            $CCTVBannerActive.setAttribute('position', '0 0 -0.01');
+                            break;
+                    }
+                });
+
+                this.el.addEventListener('click', function () {
+
+                    switch(data.evidenceType) {
+                        case 'Cigarette':
+                            $cigaretteBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideOneImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'Footprint':
+                            $footPrintBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideThreeImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'Glass Fragments':
+                            $glassFragmentsBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideFourImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'Door Handle':
+                            $doorHandleBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideFiveImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'Finger Print':
+                            $fingerPrintBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideSixImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'Carpet Mark':
+                            $carpetBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideSevenImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'iMac':
+                            $iMacBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideEightImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'Fridge':
+                            $fridgeBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideNineImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'Mobile':
+
+                            // Stop dial tone once call has been listened to
+                            $dialToneElement.pause();
+
+                            // Reset Call Audio if already playing
+                            if ($callSourceFile.paused === 'false') {
+                                $callSourceFile.currentTime = 0;
+                                $callSourceFile.pause();
+                            }
+
+                            $callSourceFile.play();
+
+                            $mobileBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideTenImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'BackDoor':
+                            $backDoorBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideElevenImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'Body':
+                            $bodyBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideTwelveImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'Hammer':
+                            $hammerBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideEighteenImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'Keys':
+                            $keysBannerActive.setAttribute('position', '0 0 -0.01');
+                            $imageBanner.setAttribute('src', '#SlideNineteenImage');
+                            $imageBanner.setAttribute('scale', '1 1 1');
+                            break;
+                        case 'CCTV':
+
+                            // Reset CCTV if already playing
+                            if ($CCTVVideoSourceFile.paused === 'false') {
+                                $CCTVVideoSourceFile.currentTime = 0;
+                                $CCTVVideoSourceFile.pause();
+                            } else {
+                                $videoBanner.setAttribute('src', '#CCTVVideoSourceFile');
+                            }
+
+                            $CCTVVideoSourceFile.play();
+
+                            $CCTVBannerActive.setAttribute('position', '0 0 -0.01');
+                            $videoBanner.setAttribute('scale', '1 1 1');
+                            break;
+                    }
+                });
+            }
+        });
+
+        AFRAME.registerComponent('close-listener', {
+
+            schema: {
+                evidenceType: {type: 'string'}
+            },
+
+            init: function () {
+
+                var data = this.data;
+
+                var $cigaretteInfo = document.getElementById('CigaretteInfoIcon');
+                var $cigaretteClose = document.getElementById('CigaretteInfoClose');
+                var $footPrintInfo = document.getElementById('FootPrintInfoIcon');
+                var $footPrintClose = document.getElementById('FootPrintInfoClose');
+                var $glassFragmentsInfo = document.getElementById('GlassFragmentsIcon');
+                var $glassFragmentsClose = document.getElementById('GlassFragmentsInfoClose');
+                var $doorHandleInfo = document.getElementById('DoorHandleIcon');
+                var $doorHandleClose = document.getElementById('DoorHandleInfoClose');
+                var $fingerPrintInfo = document.getElementById('FingerPrintIcon');
+                var $fingerPrintClose = document.getElementById('FingerPrintInfoClose');
+                var $carpetInfo = document.getElementById('CarpetIcon');
+                var $carpetClose = document.getElementById('CarpetInfoClose');
+                var $iMacInfo = document.getElementById('IMacIcon');
+                var $iMacClose = document.getElementById('IMacInfoClose');
+                var $fridgeInfo = document.getElementById('FridgeIcon');
+                var $fridgeClose = document.getElementById('FridgeInfoClose');
+                var $mobileInfo = document.getElementById('MobileIcon');
+                var $mobileClose = document.getElementById('MobileInfoClose');
+                var $backDoorInfo = document.getElementById('BackDoorIcon');
+                var $backDoorClose = document.getElementById('BackDoorInfoClose');
+                var $bodyInfo = document.getElementById('BodyIcon');
+                var $bodyClose = document.getElementById('BodyInfoClose');
+                var $hammerInfo = document.getElementById('HammerIcon');
+                var $hammerClose = document.getElementById('HammerInfoClose');
+                var $keysInfo = document.getElementById('KeysIcon');
+                var $keysClose = document.getElementById('KeysInfoClose');
+                var $CCTVInfo = document.getElementById('CCTVIcon');
+                var $CCTVClose = document.getElementById('CCTVInfoClose');
+
+                var $cigaretteBanner = document.getElementById('CigaretteBanner');
+                var $footPrintBanner = document.getElementById('FootPrintBanner');
+                var $glassFragmentsBanner = document.getElementById('GlassFragmentsBanner');
+                var $doorHandleBanner = document.getElementById('DoorHandleBanner');
+                var $fingerPrintBanner = document.getElementById('FingerPrintBanner');
+                var $carpetBanner = document.getElementById('CarpetBanner');
+                var $iMacBanner = document.getElementById('IMacBanner');
+                var $fridgeBanner = document.getElementById('FridgeBanner');
+                var $mobileBanner = document.getElementById('MobileBanner');
+                var $backDoorBanner = document.getElementById('BackDoorBanner');
+                var $bodyBanner = document.getElementById('BodyBanner');
+                var $hammerBanner = document.getElementById('HammerBanner');
+                var $keysBanner = document.getElementById('KeysBanner');
+                var $CCTVBanner = document.getElementById('CCTVBanner');
+
+                var $callSourceFile = document.getElementById('PhoneCallSourceFile');
+                var $CCTVVideoSourceFile = document.getElementById('CCTVVideoSourceFile');
+
+                this.el.addEventListener('mouseenter', function (event) {
+                    event.target.setAttribute('opacity', '1');
+                }.bind(this));
+
+                this.el.addEventListener('mouseleave', function (event) {
+                    event.target.setAttribute('opacity', '0.4');
+                }.bind(this));
+
+                this.el.addEventListener('click', function () {
+
+                    switch(data.evidenceType) {
+                        case 'Cigarette':
+                            $cigaretteBanner.setAttribute('scale', '0 0 0');
+                            $cigaretteClose.setAttribute('visible', 'false');
+                            $cigaretteInfo.setAttribute('visible', 'true');
+                            break;
+                        case 'Footprint':
+                            $footPrintBanner.setAttribute('scale', '0 0 0');
+                            $footPrintClose.setAttribute('visible', 'false');
+                            $footPrintInfo.setAttribute('visible', 'true');
+                            break;
+                        case 'Glass Fragments':
+                            $glassFragmentsBanner.setAttribute('scale', '0 0 0');
+                            $glassFragmentsClose.setAttribute('visible', 'false');
+                            $glassFragmentsInfo.setAttribute('visible', 'true');
+                            break;
+                        case 'Door Handle':
+                            $doorHandleBanner.setAttribute('scale', '0 0 0');
+                            $doorHandleClose.setAttribute('visible', 'false');
+                            $doorHandleInfo.setAttribute('visible', 'true');
+                            break;
+                        case 'Finger Print':
+                            $fingerPrintBanner.setAttribute('scale', '0 0 0');
+                            $fingerPrintClose.setAttribute('visible', 'false');
+                            $fingerPrintInfo.setAttribute('visible', 'true');
+                            break;
+                        case 'Carpet Mark':
+                            $carpetBanner.setAttribute('scale', '0 0 0');
+                            $carpetClose.setAttribute('visible', 'false');
+                            $carpetInfo.setAttribute('visible', 'true');
+                            break;
+                        case 'iMac':
+                            $iMacBanner.setAttribute('scale', '0 0 0');
+                            $iMacClose.setAttribute('visible', 'false');
+                            $iMacInfo.setAttribute('visible', 'true');
+                            break;
+                        case 'Fridge':
+                            $fridgeBanner.setAttribute('scale', '0 0 0');
+                            $fridgeClose.setAttribute('visible', 'false');
+                            $fridgeInfo.setAttribute('visible', 'true');
+                            break;
+                        case 'Mobile':
+                            $mobileBanner.setAttribute('scale', '0 0 0');
+                            $mobileClose.setAttribute('visible', 'false');
+                            $mobileInfo.setAttribute('visible', 'true');
+                            $callSourceFile.pause();
+                            $callSourceFile.currentTime = 0;
+                            break;
+                        case 'BackDoor':
+                            $backDoorBanner.setAttribute('scale', '0 0 0');
+                            $backDoorClose.setAttribute('visible', 'false');
+                            $backDoorInfo.setAttribute('visible', 'true');
+                            break;
+                        case 'Body':
+                            $bodyBanner.setAttribute('scale', '0 0 0');
+                            $bodyClose.setAttribute('visible', 'false');
+                            $bodyInfo.setAttribute('visible', 'true');
+                            break;
+                        case 'Hammer':
+                            $hammerBanner.setAttribute('scale', '0 0 0');
+                            $hammerClose.setAttribute('visible', 'false');
+                            $hammerInfo.setAttribute('visible', 'true');
+                            break;
+                        case 'Keys':
+                            $keysBanner.setAttribute('scale', '0 0 0');
+                            $keysClose.setAttribute('visible', 'false');
+                            $keysInfo.setAttribute('visible', 'true');
+                            break;
+                        case 'CCTV':
+                            $CCTVBanner.setAttribute('scale', '0 0 0');
+                            $CCTVClose.setAttribute('visible', 'false');
+                            $CCTVInfo.setAttribute('visible', 'true');
+                            $CCTVVideoSourceFile.pause();
+                            $CCTVVideoSourceFile.currentTime = 0;
+                            break;
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+
+<img id="LoadingMask" class="mask-image" src="assets/img/mask.png" >
+
+<a-scene>
+    <a-assets>
+
+        <!-- Audio -->
+        <audio id="click-sound" src="assets/sounds/click.ogg"></audio>
+        <audio id="DialToneSourceFile" src="assets/sounds/dial-tone.ogg"></audio>
+        <video id="PhoneCallSourceFile" preload="auto" src="assets/video/999Call.webm"></video>
+
+        <!-- CCTV Video  -->
+        <video id="CCTVVideoSourceFile" preload="auto" src="assets/video/CCTV.webm" loop="true"></video>
+
+        <!-- Enter VR Image -->
+        <img id="EnterVRImage" src="assets/img/go.gif">
+
+        <!-- Close Banner Image -->
+        <img id="CloseBannerImage" src="assets/img/close-icon.png">
+
+        <!-- Sky -->
+        <img id="SkyBox" src="assets/img/sky.jpg">
+
+        <!-- Street Limit Images -->
+        <img id="StreetLimitNorthImage" src="assets/img/tl-north.png">
+        <img id="StreetLimitEastOneImage" src="assets/img/east-view-1.png">
+        <img id="StreetLimitEastTwoImage" src="assets/img/east-view-2.png">
+        <img id="StreetLimitWestOneImage" src="assets/img/west-view.png">
+        <img id="StreetLimitWestTwoImage" src="assets/img/west-view-2.png">
+        <img id="StreetLimitSouthImage" src="assets/img/tl-south.png">
+
+        <!-- Info Image -->
+        <img id="InfoImage" src="assets/img/magnify-icon.png">
+
+        <!--  Evidence Banners -->
+        <img id="BannerOneImage" src="assets/img/1-hover-off.png">
+        <img id="BannerThreeImage" src="assets/img/3-hover-off.png">
+        <img id="BannerFourImage" src="assets/img/4-hover-off.png">
+        <img id="BannerFiveImage" src="assets/img/5-hover-off.png">
+        <img id="BannerSixImage" src="assets/img/6-hover-off.png">
+        <img id="BannerSevenImage" src="assets/img/7-hover-off.png">
+        <img id="BannerEightImage" src="assets/img/8-hover-off.png">
+        <img id="BannerNineImage" src="assets/img/9-hover-off.png">
+        <img id="BannerTenImage" src="assets/img/10-hover-off.png">
+        <img id="BannerElevenImage" src="assets/img/11-hover-off.png">
+        <img id="BannerTwelveImage" src="assets/img/12-hover-off.png">
+        <img id="BannerEighteenImage" src="assets/img/18-hover-off.png">
+        <img id="BannerNineteenImage" src="assets/img/19-hover-off.png">
+        <img id="BannerTwentyImage" src="assets/img/20-hover-off.png">
+        <img id="BannerOneImageActive" src="assets/img/1-hover-on.png">
+        <img id="BannerThreeImageActive" src="assets/img/3-hover-on.png">
+        <img id="BannerFourImageActive" src="assets/img/4-hover-on.png">
+        <img id="BannerFiveImageActive" src="assets/img/5-hover-on.png">
+        <img id="BannerSixImageActive" src="assets/img/6-hover-on.png">
+        <img id="BannerSevenImageActive" src="assets/img/7-hover-on.png">
+        <img id="BannerEightImageActive" src="assets/img/8-hover-on.png">
+        <img id="BannerNineImageActive" src="assets/img/9-hover-on.png">
+        <img id="BannerTenImageActive" src="assets/img/10-hover-on.png">
+        <img id="BannerElevenImageActive" src="assets/img/11-hover-on.png">
+        <img id="BannerTwelveImageActive" src="assets/img/12-hover-on.png">
+        <img id="BannerEighteenImageActive" src="assets/img/18-hover-on.png">
+        <img id="BannerNineteenImageActive" src="assets/img/19-hover-on.png">
+        <img id="BannerTwentyImageActive" src="assets/img/20-hover-on.png">
+
+        <!--  Slides -->
+        <img id="DefaultSlide" src="assets/img/default-slide.png">
+        <img id="SlideOneImage" src="assets/img/slide1.jpg">
+        <img id="SlideThreeImage" src="assets/img/slide3.jpg">
+        <img id="SlideFourImage" src="assets/img/slide4.jpg">
+        <img id="SlideFiveImage" src="assets/img/slide5.jpg">
+        <img id="SlideSixImage" src="assets/img/slide6.jpg">
+        <img id="SlideSevenImage" src="assets/img/slide7.jpg">
+        <img id="SlideEightImage" src="assets/img/slide8.jpg">
+        <img id="SlideNineImage" src="assets/img/slide9.jpg">
+        <img id="SlideTenImage" src="assets/img/slide10.jpg">
+        <img id="SlideElevenImage" src="assets/img/slide11.jpg">
+        <img id="SlideTwelveImage" src="assets/img/slide12.jpg">
+        <img id="SlideThirteenImage" src="assets/img/slide13.jpg">
+        <img id="SlideFourteenImage" src="assets/img/slide14.jpg">
+        <img id="SlideFifteenImage" src="assets/img/slide15.jpg">
+        <img id="SlideSixteenImage" src="assets/img/slide16.jpg">
+        <img id="SlideSeventeenImage" src="assets/img/slide17.jpg">
+        <img id="SlideEighteenImage" src="assets/img/slide18.jpg">
+        <img id="SlideNineteenImage" src="assets/img/slide19.jpg">
+        <img id="SlideTwentyImage" src="assets/img/slide20.jpg">
+        <img id="SlideTwentyOneImage" src="assets/img/slide21.jpg">
+
+        <!-- Loading Mask Collada Model-->
+        <a-asset-item id="LoadingMaskCollada" src="assets/collada/LoadingMask.dae"></a-asset-item>
+
+        <!-- Turf Lane Collada Model-->
+        <a-asset-item id="TurfLaneCollada" src="assets/collada/Crime.dae"></a-asset-item>
+
+        <!-- Body Collada Model-->
+        <a-asset-item id="BodyCollada" src="assets/collada/dead-me.dae"></a-asset-item>
+
+        <!-- iMac Collada Model-->
+        <a-asset-item id="IMacCollada" src="assets/collada/iMac.dae"></a-asset-item>
+
+
+    </a-assets>
+
+    <!-- Loading Mask -->
+    <a-entity id="LoadingScene" position="0 0 0">
+
+        <a-image id="GoIcon"
+                 class="clickable look-at"
+                 go-listener
+                 src="#EnterVRImage"
+                 height="0.7"
+                 width="0.7"
+                 depth="0.2"
+                 opacity="0.4"
+                 position="3.0 1.8 -3.5"
+                 sound="on: click; src: #click-sound"
+                 visible="false"></a-image>
+
+        <a-entity id="LoadingMask"
+                  position="-0.5 0.7 0.5"
+                  rotation="0 -90 0"
+                  collada-model="#LoadingMaskCollada">
+
+            <a-light type="point"
+                     color="#bbb"
+                     intensity="5.0"
+                     distance="5"
+                     decay="1"
+                     position="0 0 0"></a-light>
+        </a-entity>
+    </a-entity>
+
+    <a-entity id="CrimeScene">
+
+        <!-- Floor Geometry -->
+        <a-entity id="FloorGeometry"
+                  position="3 -0.2 0"
+                  obj-model="obj: url(assets/models/floor.obj)">
+        </a-entity>
+
+        <!-- Info Icons-->
+        <a-entity id="Icons" visible="false">
+
+            <a-image id="CigaretteInfoIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: Cigarette;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="12.23 0.83 -2.62"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="CigaretteInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: Cigarette"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="12.23 0.83 -2.62"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="FootPrintInfoIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: Footprint;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="10.23 0.83 -3.92"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="FootPrintInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: Footprint"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="10.23 0.83 -3.92"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="GlassFragmentsIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: Glass Fragments;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="10.16 1.8 -4.8"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="GlassFragmentsInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: Glass Fragments"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="10.16 1.8 -4.8"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="DoorHandleIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: Door Handle;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="10.66 1.65 -6.2"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="DoorHandleInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: Door Handle"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="10.66 1.65 -6.2"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="FingerPrintIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: Finger Print;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="13.3 1.44 -5.3"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="FingerPrintInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: Finger Print"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="13.3 1.44 -5.3"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="CarpetIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: Carpet Mark;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="12.3 0.8 -6.6"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="CarpetInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: Carpet Mark"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="12.3 0.8 -6.6"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="IMacIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: iMac;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="11.7 0.91 -10.4"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="IMacInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: iMac"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="11.7 0.91 -10.4"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="FridgeIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: Fridge;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="10.6 2.0 -12.0"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="FridgeInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: Fridge"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="10.6 2.0 -12.0"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="MobileIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: Mobile;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="10.5 1.0 -11.2"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="MobileInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: Mobile"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="10.5 1.0 -11.2"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="BackDoorIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: BackDoor;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="12.4 1.5 -13.0"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="BackDoorInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: BackDoor"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="12.4 1.5 -13.0"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="BodyIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: Body;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="11 1.01 -11.4"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="BodyInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: Body"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="11 1.01 -11.4"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="HammerIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: Hammer;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="11.08 0.72 -13.9"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="HammerInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: Hammer"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="11.08 0.72 -13.9"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="KeysIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: Keys;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="10.58 0.72 -12.9"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="KeysInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: Keys"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="10.58 0.72 -12.9"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+            <a-image id="CCTVIcon"
+                     class="info-icon clickable look-at"
+                     cursor-listener="evidenceType: CCTV;"
+                     src="#InfoImage"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="-3.5 1.7 -21.5"
+                     sound="on: click; src: #click-sound"></a-image>
+
+            <a-image id="CCTVInfoClose"
+                     src="#CloseBannerImage"
+                     class="clickable look-at"
+                     close-listener="evidenceType: CCTV"
+                     height="0.2"
+                     width="0.2"
+                     depth="0.2"
+                     opacity="0.4"
+                     position="-3.5 1.7 -21.5"
+                     sound="on: click; src: #click-sound"
+                     visible="false">
+            </a-image>
+
+        </a-entity>
+
+        <!-- Banner Displays -->
+        <a-entity id="CigaretteBanner"
+                  class="clickable look-at"
+                  position="12.28 1.7 -2.60"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: Cigarette">
+            <a-image src="#BannerOneImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="CigaretteBannerActive"
+                      class="clickable"
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: Cigarette">
+                <a-image src="#BannerOneImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="FootPrintBanner"
+                  class="clickable look-at"
+                  position="10.2 1.7 -3.8"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: Footprint;">
+            <a-image src="#BannerThreeImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="FootPrintBannerActive"
+                      class="clickable"
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: Footprint">
+                <a-image src="#BannerThreeImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="GlassFragmentsBanner"
+                  class="clickable look-at"
+                  position="10.47 1.7 -4.2"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: Glass Fragments;">
+            <a-image src="#BannerFourImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="GlassFragmentsBannerActive"
+                      class="clickable "
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: Glass Fragments">
+                <a-image src="#BannerFourImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="DoorHandleBanner"
+                  class="clickable look-at"
+                  position="11.15 1.7 -6.3"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: Door Handle;">
+            <a-image src="#BannerFiveImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="DoorHandleBannerActive"
+                      class="clickable"
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: Door Handle">
+                <a-image src="#BannerFiveImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="FingerPrintBanner"
+                  class="clickable look-at"
+                  position="13.1 1.75 -5.55"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: Finger Print;">
+            <a-image src="#BannerSixImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="FingerPrintBannerActive"
+                      class="clickable"
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: Finger Print">
+                <a-image src="#BannerSixImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="CarpetBanner"
+                  class="clickable look-at"
+                  position="12.3 1.7 -6.6"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: Carpet Mark;">
+            <a-image src="#BannerSevenImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="CarpetBannerActive"
+                      class="clickable"
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: Carpet Mark">
+                <a-image src="#BannerSevenImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="IMacBanner"
+                  class="clickable look-at"
+                  position="11.7 1.7 -10.4"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: iMac;">
+            <a-image src="#BannerEightImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="IMacBannerActive"
+                      class="clickable"
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: iMac">
+                <a-image src="#BannerEightImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="FridgeBanner"
+                  class="clickable look-at"
+                  position="11.1 1.7 -12.2"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: Fridge;">
+            <a-image src="#BannerNineImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="FridgeBannerActive"
+                      class="clickable"
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: Fridge">
+                <a-image src="#BannerNineImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="MobileBanner"
+                  class="clickable look-at"
+                  position="10.5 1.7 -11.0"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: Mobile;">
+            <a-image src="#BannerTenImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="MobileBannerActive"
+                      class="clickable "
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: Mobile">
+                <a-image src="#BannerTenImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="BackDoorBanner"
+                  class="clickable look-at"
+                  position="12.3 1.7 -13.4"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: BackDoor;">
+            <a-image src="#BannerElevenImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="BackDoorBannerActive"
+                      class="clickable"
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: BackDoor">
+                <a-image src="#BannerElevenImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="BodyBanner"
+                  class="clickable look-at"
+                  position="11.0 1.7 -11.3"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: Body;">
+            <a-image src="#BannerTwelveImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="BodyBannerActive"
+                      class="clickable"
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: Body">
+                <a-image src="#BannerTwelveImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="HammerBanner"
+                  class="clickable look-at"
+                  position="11.08 1.7 -13.9"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: Hammer;">
+            <a-image src="#BannerEighteenImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="HammerBannerActive"
+                      class="clickable "
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: Hammer">
+                <a-image src="#BannerEighteenImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="KeysBanner"
+                  class="clickable look-at"
+                  position="10.98 1.7 -12.9"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: Keys;">
+            <a-image src="#BannerNineteenImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="KeysBannerActive"
+                      class="clickable"
+                      position="0 0 -0.01"
+                      info-panel-active-listener="evidenceType: Keys">
+                <a-image src="#BannerNineteenImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <a-entity id="CCTVBanner"
+                  class="clickable look-at"
+                  position="-3.5 1.7 -22.1"
+                  scale="0 0 0"
+                  info-panel-listener="evidenceType: CCTV;">
+            <a-image src="#BannerTwentyImage" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            <a-entity id="CCTVBannerActive"
+                      class="clickable "
+                      position="-0 0 -0.01"
+                      info-panel-active-listener="evidenceType: CCTV">
+                <a-image src="#BannerTwentyImageActive" geometry="primitive: plane; height: 0.375; width: 0.5"></a-image>
+            </a-entity>
+        </a-entity>
+
+
+        <!-- Turf Lane -->
+        <a-entity id="TurfLane"
+                  collada-model="#TurfLaneCollada"
+                  cursor-listener
+                  position="3 0 0"></a-entity>
+
+        <!-- Street Limit -->
+        <a-image id="StreetLimitNorth"
+                 src="#StreetLimitNorthImage"
+                 height="10.54"
+                 width="17.56"
+                 position="56.75 5.37 0.7"
+                 rotation="0 270 0"
+                 material="shader:standard"></a-image>
+
+        <a-image id="StreetLimitEastOne"
+                 src="#StreetLimitEastOneImage"
+                 height="10.54"
+                 width="17.56"
+                 position="29.7 3.9 29.8"
+                 rotation="0 180 0"
+                 material="shader:standard"></a-image>
+
+        <a-image id="StreetLimitEastTwo"
+                 src="#StreetLimitEastTwoImage"
+                 height="10.54"
+                 width="17.56"
+                 position="-15.71 3.3 29.8"
+                 rotation="-50 180 0"
+                 material="shader:standard"></a-image>
+
+        <a-image id="StreetLimitSouth"
+                 src="#StreetLimitSouthImage"
+                 height="10.54"
+                 width="17.56"
+                 position="-51.75 5.37 0.7"
+                 rotation="0 90 0"
+                 material="shader:standard"></a-image>
+
+        <a-image id="StreetLimitWestOne"
+                 src="#StreetLimitWestOneImage"
+                 height="10.54"
+                 width="17.56"
+                 position="31.3 5.4 -36.0"
+                 rotation="0 0 0"
+                 material="shader:standard"></a-image>
+
+        <a-image id="StreetLimitWestTwo"
+                 src="#StreetLimitWestTwoImage"
+                 height="10.54"
+                 width="17.56"
+                 position="-16 5.4 -36.0"
+                 rotation="0 0 0"
+                 material="shader:standard"></a-image>
+
+        <!-- Body -->
+        <a-entity id="Body"
+                  collada-model="#BodyCollada"
+                  position="11 0.71 -10.3"
+                  rotation="90 180 0"></a-entity>
+
+        <!-- iMac -->
+        <a-entity id="IMac"
+                  collada-model="#IMacCollada"
+                  position="11.7 0.51 -10.4"
+                  rotation="90 30 0"
+                  scale="0.8 0.8 0.8"></a-entity>
+
+        <a-sound id="DialToneElement"
+                 src="#DialToneSourceFile"
+                 volume="0.1"
+                 loop="true"
+                 height="0.81"
+                 width="1.2"
+                 position="10.5 1.0 -11.2"></a-sound>
+
+        <a-video id="CallElement"
+                 height="0.81"
+                 width="1.2"
+                 position="0 0 -5"></a-video>
+
+        <!-- LIGHTING -->
+        <a-entity id="Lighting" visible="false">
+
+            <!-- Street Light One Light -->
+            <a-light type="spot"
+                     angle="60"
+                     color="#f7d352"
+                     intensity="1.5"
+                     distance="30"
+                     decay="1.2"
+                     position="-3.03 8.8 -0.5"
+                     rotation="315 0 0"></a-light>
+
+            <!-- Street Light Two Light -->
+            <a-light type="spot"
+                     angle="80"
+                     color="#f7d352"
+                     intensity="1.2"
+                     distance="40"
+                     decay="1.5"
+                     position="19.4 7.4 2.35"
+                     rotation="130 0 0"></a-light>
+
+            <!-- Street Light Three Light -->
+            <a-light type="spot"
+                     angle="60"
+                     color="#f7d352"
+                     intensity="1.5"
+                     distance="30"
+                     decay="1.2"
+                     position="-30.8 7.9 4.7"
+                     rotation="160 0 0"></a-light>
+
+            <!-- Street Light Four Light -->
+            <a-light type="spot"
+                     angle="80"
+                     color="#f7d352"
+                     intensity="1.2"
+                     distance="20"
+                     decay="2"
+                     position="28.5 7.4 -11.3"
+                     rotation="0 90 0"></a-light>
+
+            <!-- Street Light Five Light -->
+            <a-light type="spot"
+                     angle="60"
+                     color="#f7d352"
+                     intensity="1.5"
+                     distance="20"
+                     decay="1.2"
+                     position="-13.7 6.0 3.95"
+                     rotation="160 0 0"></a-light>
+
+            <!-- Front room Light -->
+            <a-light type="point"
+                     color="#fdf6ce"
+                     intensity="0.75"
+                     distance="8"
+                     decay="2"
+                     position="10 1.8 -6.6"></a-light>
+
+            <!-- Back room Light -->
+            <a-light type="point"
+                     color="#ffe29a"
+                     intensity="0.75"
+                     distance="6"
+                     decay="3"
+                     position="12.5 2.75 -10.3"></a-light>
+
+        </a-entity>
+
+        <!-- Sky -->
+        <a-sky src="#SkyBox"></a-sky>
+
+        <!-- BannerS -->
+        <a-image id="ImageBanner"
+                 class="clickable"
+                 geometry="primitive: plane; height: 0.75; width: 1.0"
+                 position="0 0 -1.0"
+                 scale="0 0 0"
+                 hud-close></a-image>
+
+        <a-video id="VideoBanner"
+                 class="clickable"
+                 height="0.6675"
+                 width="1.2"
+                 position="0 0 -1.0"
+                 scale="0 0 0"
+                 hud-close>
+        </a-video>
+
+    </a-entity>
+
+    <!-- Teleporter -->
+    <a-entity id="LeftHand" teleport-controls="collisionEntity: #FloorGeometry; button: trigger; maxLength: 25" vive-controls="hand: left"></a-entity>
+
+    <!-- Controller
+    <a-entity id="RightHand" custom-vive-controls vive-cursor="objects: .clickable" vive-controls="hand: right"></a-entity> -->
+    <a-entity id="RightHand" leap-hand="hand: right"></a-entity>
+</a-scene>
+</body>
+</html>
