@@ -41,12 +41,10 @@
             var $loadingMask = document.getElementById('LoadingMask');
             var $goIcon = document.getElementById('GoIcon');
             var $camera;
-            var $rightHand = document.getElementById('RightHand');
-            var $viveCursor = document.querySelector('[vive-cursor]');
+            var $leftHand = document.getElementById('LeftHand');
             var $imageBanner = document.getElementById("ImageBanner");
             var $videoBanner = document.getElementById("VideoBanner");
             var $lookAtItems= document.querySelectorAll('.look-at');
-            var trackPadPressed = false;
 
             $turfLaneModel.addEventListener('model-loaded', function () {
 
@@ -61,7 +59,7 @@
 
                 $camera.appendChild($imageBanner);
                 $camera.appendChild($videoBanner);
-                $camera.appendChild($rightHand);
+                $camera.appendChild($leftHand);
 
                 // Point at house to get frameset slowing warnings out of the way
                 $camera.setAttribute('rotation', '0 -45 0');
@@ -74,17 +72,6 @@
 
             $scene.addEventListener('enter-vr', function () {
                 $goIcon.setAttribute('visible', 'true');
-            });
-
-            $viveCursor.addEventListener('trackpadup', function () {
-
-                if (trackPadPressed) {
-                    console.log('trackPad Up');
-                    $viveCursor.setAttribute('visible', false);
-                    $rightHand.setAttribute('visible', true);
-                }
-
-                trackPadPressed = true;
             });
         });
 
@@ -1537,11 +1524,15 @@
     </a-entity>
 
     <!-- Teleporter -->
-    <a-entity id="LeftHand" teleport-controls="collisionEntity: #FloorGeometry; button: trigger; maxLength: 25" vive-controls="hand: left"></a-entity>
+    <a-entity id="RightHand"
+              custom-vive-controls
+              vive-cursor="objects: .clickable"
+              teleport-controls="collisionEntity: #FloorGeometry; button: trackpad; maxLength: 25"
+              vive-controls="hand: right"></a-entity>
 
-    <!-- Controller-->
-    <a-entity id="RightHandCursor" custom-vive-controls vive-cursor="objects: .clickable" vive-controls="hand: right"></a-entity>
-    <a-entity id="RightHand" leap-hand="hand: right" visible="false"></a-entity>
+    <!-- Controller
+    <a-entity id="RightHandCursor" custom-vive-controls vive-cursor="objects: .clickable" vive-controls="hand: right"></a-entity>-->
+    <a-entity id="LeftHand" leap-hand="hand: left"></a-entity>
 </a-scene>
 </body>
 </html>
