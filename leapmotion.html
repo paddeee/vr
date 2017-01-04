@@ -30,7 +30,7 @@
     <script src="lib/kframe.min.js"></script>
     <script src="lib/aframe-vive-cursor-component.min.js"></script>
     <script src="lib/aframe-teleport-controls.min.js"></script>
-    <script src="lib/aframe-leap-hands.min.js"></script>
+    <script src="lib/aframe-leap-hands.js"></script>
 
     <script>
 
@@ -42,9 +42,11 @@
             var $goIcon = document.getElementById('GoIcon');
             var $camera;
             var $rightHand = document.getElementById('RightHand');
+            var $viveCursor = document.querySelector('[vive-cursor]');
             var $imageBanner = document.getElementById("ImageBanner");
             var $videoBanner = document.getElementById("VideoBanner");
             var $lookAtItems= document.querySelectorAll('.look-at');
+            var trackPadPressed = false;
 
             $turfLaneModel.addEventListener('model-loaded', function () {
 
@@ -72,6 +74,17 @@
 
             $scene.addEventListener('enter-vr', function () {
                 $goIcon.setAttribute('visible', 'true');
+            });
+
+            $viveCursor.addEventListener('trackpadup', function () {
+
+                if (trackPadPressed) {
+                    console.log('trackPad Up');
+                    $viveCursor.setAttribute('visible', false);
+                    $rightHand.setAttribute('visible', true);
+                }
+
+                trackPadPressed = true;
             });
         });
 
@@ -1406,7 +1419,7 @@
         <!-- Body -->
         <a-entity id="Body"
                   collada-model="#BodyCollada"
-                  position="11.26 0.71 -11.0"
+                  position="11.26 0.57 -11.0"
                   scale="0.76 0.76 0.76"
                   rotation="0 0 0"></a-entity>
 
@@ -1526,9 +1539,9 @@
     <!-- Teleporter -->
     <a-entity id="LeftHand" teleport-controls="collisionEntity: #FloorGeometry; button: trigger; maxLength: 25" vive-controls="hand: left"></a-entity>
 
-    <!-- Controller
-    <a-entity id="RightHand" custom-vive-controls vive-cursor="objects: .clickable" vive-controls="hand: right"></a-entity> -->
-    <a-entity id="RightHand" leap-hand="hand: right"></a-entity>
+    <!-- Controller-->
+    <a-entity id="RightHandCursor" custom-vive-controls vive-cursor="objects: .clickable" vive-controls="hand: right"></a-entity>
+    <a-entity id="RightHand" leap-hand="hand: right" visible="false"></a-entity>
 </a-scene>
 </body>
 </html>
