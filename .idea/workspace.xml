@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="79cdede7-07f6-48da-a2e3-775d8e19bddf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/leapmotion.html" afterPath="$PROJECT_DIR$/leapmotion.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-fixed.html" afterPath="$PROJECT_DIR$/mobile-fixed.html" />
     </list>
     <ignored path="aframe-boilerplate.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,11 +23,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mobile-fixed.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mobile-fixed.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23681">
-              <caret line="1393" column="38" selection-start-line="1393" selection-start-column="38" selection-end-line="1393" selection-end-column="38" />
+            <state relative-caret-position="153">
+              <caret line="1334" column="19" selection-start-line="1334" selection-start-column="19" selection-end-line="1334" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="732" column="66" selection-start-line="732" selection-start-column="66" selection-end-line="732" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -43,21 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23851">
-              <caret line="1403" column="38" selection-start-line="1403" selection-start-column="38" selection-end-line="1403" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="leapmotion.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="leapmotion.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/leapmotion.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
-              <caret line="1525" column="23" selection-start-line="1525" selection-start-column="23" selection-end-line="1525" selection-end-column="23" />
+            <state relative-caret-position="1090">
+              <caret line="1509" column="70" selection-start-line="1509" selection-start-column="70" selection-end-line="1509" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -92,9 +92,9 @@
         <option value="$PROJECT_DIR$/index-hud.html" />
         <option value="$PROJECT_DIR$/lib/aframe.min.js" />
         <option value="$PROJECT_DIR$/index-fixed.html" />
-        <option value="$PROJECT_DIR$/mobile-fixed.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/leapmotion.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/mobile-fixed.html" />
       </list>
     </option>
   </component>
@@ -155,6 +155,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="aframe-boilerplate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aframe-boilerplate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aframe-boilerplate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -290,7 +304,8 @@
       <workItem from="1482238240683" duration="4991000" />
       <workItem from="1482243670657" duration="4700000" />
       <workItem from="1483446321475" duration="12460000" />
-      <workItem from="1483528626727" duration="34000" />
+      <workItem from="1483528626727" duration="674000" />
+      <workItem from="1484043406750" duration="2720000" />
     </task>
     <task id="LOCAL-00001" summary="Vive teleport and cursor contrrols working'">
       <created>1478782814488</created>
@@ -537,21 +552,28 @@
       <option name="project" value="LOCAL" />
       <updated>1483525392993</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Got a Leap Motion Hand with controls all on vive controller">
+      <created>1483528690995</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1483528690995</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="365673000" />
+    <option name="totallyTimeSpent" value="369033000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="2" width="1924" height="1084" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.112937436" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12937434" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3170467" sideWeight="0.5023419" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32340863" sideWeight="0.49765807" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3228181" sideWeight="0.49765807" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16298632" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -597,7 +619,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Demo Version" />
     <MESSAGE value="Demo Version proper" />
     <MESSAGE value="DigiCities Demo Version" />
     <MESSAGE value="Phone Call Working" />
@@ -622,7 +643,8 @@
     <MESSAGE value="Added LeapMotion page" />
     <MESSAGE value="Changed body collada" />
     <MESSAGE value="Experimenting with Leap Motion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Experimenting with Leap Motion" />
+    <MESSAGE value="Got a Leap Motion Hand with controls all on vive controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Got a Leap Motion Hand with controls all on vive controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -993,26 +1015,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mobile-hud.html" />
     <entry file="file://$PROJECT_DIR$/index-fixed.html" />
-    <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
+    <entry file="file://$PROJECT_DIR$/leapmotion.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23681">
-          <caret line="1393" column="38" selection-start-line="1393" selection-start-column="38" selection-end-line="1393" selection-end-column="38" />
+        <state relative-caret-position="1090">
+          <caret line="1509" column="70" selection-start-line="1509" selection-start-column="70" selection-end-line="1509" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23851">
-          <caret line="1403" column="38" selection-start-line="1403" selection-start-column="38" selection-end-line="1403" selection-end-column="38" />
+        <state relative-caret-position="196">
+          <caret line="732" column="66" selection-start-line="732" selection-start-column="66" selection-end-line="732" selection-end-column="66" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/leapmotion.html">
+    <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="1525" column="23" selection-start-line="1525" selection-start-column="23" selection-end-line="1525" selection-end-column="23" />
+        <state relative-caret-position="153">
+          <caret line="1334" column="19" selection-start-line="1334" selection-start-column="19" selection-end-line="1334" selection-end-column="19" />
           <folding />
         </state>
       </provider>

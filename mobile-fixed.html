@@ -7,6 +7,7 @@
     <style>
         body {
             background-color: #000;
+            cursor: none;
         }
 
         .mask-image {
@@ -25,6 +26,7 @@
 
     <!-- Offline -->
     <script src="lib//aframe.min.js"></script>
+    <script src="lib//aframe-extras.controls.min.js"></script>
     <script src="lib/kframe.min.js"></script>
 
     <script>
@@ -35,6 +37,7 @@
             var $videoHUD = document.getElementById("VideoHUD");
 
             if (event.keyCode === 13) {
+                $imageHUD.setAttribute('src', '#DefaultSlide');
                 $imageHUD.setAttribute('visible', 'false');
                 $videoHUD.setAttribute('visible', 'false');
             }
@@ -664,6 +667,7 @@
         <img id="BannerTwentyImageActive" src="assets/img/20-hover-on.png">
 
         <!--  Slides -->
+        <img id="DefaultSlide" src="assets/img/default-slide.png">
         <img id="SlideOneImage" src="assets/img/slide1.jpg">
         <img id="SlideThreeImage" src="assets/img/slide3.jpg">
         <img id="SlideFourImage" src="assets/img/slide4.jpg">
@@ -1490,7 +1494,9 @@
         <a-entity id="User"
                   position="3 0 0"
                   rotation="0 0 0">
-            <a-camera id="Camera">
+            <a-camera id="Camera"
+                      universal-controls="movementControls: custom;"
+                      custom-controls>
 
                 <a-cursor id="cursor" objects=".clickable" color="#009ec2">
                     <a-animation begin="click" easing="ease-in" attribute="scale"
