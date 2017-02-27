@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="79cdede7-07f6-48da-a2e3-775d8e19bddf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-fixed.html" afterPath="$PROJECT_DIR$/mobile-fixed.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/aframe.min.js" afterPath="$PROJECT_DIR$/lib/aframe.min.js" />
     </list>
     <ignored path="aframe-boilerplate.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mobile-fixed.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mobile-fixed.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="1334" column="19" selection-start-line="1334" selection-start-column="19" selection-end-line="1334" selection-end-column="19" />
+            <state relative-caret-position="22984">
+              <caret line="1352" column="54" selection-start-line="1352" selection-start-column="54" selection-end-line="1352" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -36,18 +36,18 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
+            <state relative-caret-position="17">
               <caret line="732" column="66" selection-start-line="732" selection-start-column="66" selection-end-line="732" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aframe.min.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="aframe.min.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/aframe.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1117308">
-              <caret line="65724" column="29" selection-start-line="65724" selection-start-column="29" selection-end-line="65724" selection-end-column="29" />
+            <state relative-caret-position="272">
+              <caret line="59893" column="71" selection-start-line="59893" selection-start-column="71" selection-end-line="59893" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -56,7 +56,7 @@
       <file leaf-file-name="leapmotion.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/leapmotion.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1090">
+            <state relative-caret-position="25653">
               <caret line="1509" column="70" selection-start-line="1509" selection-start-column="70" selection-end-line="1509" selection-end-column="70" />
               <folding />
             </state>
@@ -66,11 +66,21 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="170">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
               <folding>
                 <marker date="1483448634726" expanded="true" signature="375:543" ph="[...]" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="aframe-teleport-controls.min.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/aframe-teleport-controls.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="0" column="3276" selection-start-line="0" selection-start-column="3276" selection-end-line="0" selection-end-column="3276" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,11 +100,11 @@
         <option value="$PROJECT_DIR$/vive.html" />
         <option value="$PROJECT_DIR$/mobile-hud.html" />
         <option value="$PROJECT_DIR$/index-hud.html" />
-        <option value="$PROJECT_DIR$/lib/aframe.min.js" />
         <option value="$PROJECT_DIR$/index-fixed.html" />
         <option value="$PROJECT_DIR$/leapmotion.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/mobile-fixed.html" />
+        <option value="$PROJECT_DIR$/lib/aframe.min.js" />
       </list>
     </option>
   </component>
@@ -168,7 +178,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aframe-boilerplate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aframe-boilerplate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -206,6 +234,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\EVI002\Sites\aframe-boilerplate\lib" />
       <recent name="C:\Users\EVI002\Sites\aframe-boilerplate" />
       <recent name="C:\Users\EVI002\Sites\aframe-boilerplate\assets\collada" />
       <recent name="$PROJECT_DIR$" />
@@ -305,7 +334,9 @@
       <workItem from="1482243670657" duration="4700000" />
       <workItem from="1483446321475" duration="12460000" />
       <workItem from="1483528626727" duration="674000" />
-      <workItem from="1484043406750" duration="2720000" />
+      <workItem from="1484043406750" duration="2773000" />
+      <workItem from="1486389488602" duration="1056000" />
+      <workItem from="1488189127953" duration="1334000" />
     </task>
     <task id="LOCAL-00001" summary="Vive teleport and cursor contrrols working'">
       <created>1478782814488</created>
@@ -559,11 +590,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483528690995</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Added HUD transition to web version">
+      <created>1484047182944</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1484047182944</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="369033000" />
+    <option name="totallyTimeSpent" value="371476000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="2" width="1924" height="1084" extended-state="0" />
@@ -572,6 +610,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12937434" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3170467" sideWeight="0.5023419" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3228181" sideWeight="0.49765807" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -584,7 +623,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -619,7 +657,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Demo Version proper" />
     <MESSAGE value="DigiCities Demo Version" />
     <MESSAGE value="Phone Call Working" />
     <MESSAGE value="Dial Tone Working" />
@@ -644,7 +681,8 @@
     <MESSAGE value="Changed body collada" />
     <MESSAGE value="Experimenting with Leap Motion" />
     <MESSAGE value="Got a Leap Motion Hand with controls all on vive controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Got a Leap Motion Hand with controls all on vive controller" />
+    <MESSAGE value="Added HUD transition to web version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added HUD transition to web version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -966,13 +1004,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/img/banner3.png" />
-    <entry file="file://$PROJECT_DIR$/lib/aframe-teleport-controls.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="177" selection-start-line="0" selection-start-column="175" selection-end-line="0" selection-end-column="177" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/aframe-vive-cursor-component.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -994,47 +1025,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <marker date="1483448634726" expanded="true" signature="375:543" ph="[...]" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index-hud.html" />
-    <entry file="file://$PROJECT_DIR$/lib/aframe.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1117308">
-          <caret line="65724" column="29" selection-start-line="65724" selection-start-column="29" selection-end-line="65724" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mobile-hud.html" />
     <entry file="file://$PROJECT_DIR$/index-fixed.html" />
     <entry file="file://$PROJECT_DIR$/leapmotion.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1090">
+        <state relative-caret-position="25653">
           <caret line="1509" column="70" selection-start-line="1509" selection-start-column="70" selection-end-line="1509" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="732" column="66" selection-start-line="732" selection-start-column="66" selection-end-line="732" selection-end-column="66" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mobile-fixed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="1334" column="19" selection-start-line="1334" selection-start-column="19" selection-end-line="1334" selection-end-column="19" />
+        <state relative-caret-position="22984">
+          <caret line="1352" column="54" selection-start-line="1352" selection-start-column="54" selection-end-line="1352" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding>
+            <marker date="1483448634726" expanded="true" signature="375:543" ph="[...]" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/aframe-teleport-controls.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="0" column="3276" selection-start-line="0" selection-start-column="3276" selection-end-line="0" selection-end-column="3276" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="732" column="66" selection-start-line="732" selection-start-column="66" selection-end-line="732" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/aframe.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="59893" column="71" selection-start-line="59893" selection-start-column="71" selection-end-line="59893" selection-end-column="71" />
           <folding />
         </state>
       </provider>
